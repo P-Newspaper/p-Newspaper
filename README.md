@@ -1,5 +1,7 @@
 # p-Newspaper
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 ## Project Overview
 
 p-Newspaper aims to connect young people with news that matters to them. By leveraging a personalized stream of news based on user input, we integrate ChatGPT's API and Newspaper3k for web scraping to deliver relevant news stories from a wide array of sources.
