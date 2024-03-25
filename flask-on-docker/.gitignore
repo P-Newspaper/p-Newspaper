@@ -1,0 +1,8 @@
+.env.prod.db
+
+./services/web/env/
+
+*.swp
+*.swo
+*.swn
+*.swm
