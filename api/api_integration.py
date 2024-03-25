@@ -2,7 +2,6 @@ import requests
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
-from bs4 import BeautifulSoup
 
 load_dotenv()
 
@@ -27,7 +26,7 @@ def filter_news(news_headlines, user_interests):
     prompt = create_prompt(news_headlines, user_interests)
 
     stream = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4",
         messages=[{"role": "user", "content": prompt}],
         stream=True,
     )
