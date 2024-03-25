@@ -2,10 +2,10 @@ import requests
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
-from bs4 import BeautifulSoup
+import sys
+from ..backend.app.access_news import get_news_from_all
 
 load_dotenv()
-
 
 # Authorization: Bearer OPENAI_API_KEY
 # Need to fund package:
@@ -29,30 +29,30 @@ def create_prompt(news_articles, user_interests):
     return prompt
 
 
-# Write function to scrape news articles
-def get_articles():
-     # Example URL of the news source
-    urls = ['https://www.nytimes.com/', 'https://www.cnn.com/']
-    articles = []
+# # Write function to scrape news articles
+# def get_articles():
+#      # Example URL of the news source
+#     urls = ['https://www.nytimes.com/', 'https://www.cnn.com/']
+#     articles = []
 
-    try:
-        # Send a GET request to fetch the news articles
-        for url in urls:
-            response = requests.get(url)
-            if response.status_code == 200:
-                # Example: Parse HTML content to extract article headlines and summaries
-                soup = BeautifulSoup(response.content, 'html.parser')
-                # BeautifulSoup is a library
-                # Implement logic to extract headlines and summaries from the HTML content
-                # Append the extracted data to the articles list
-            else:
-                print(f"Failed to fetch news articles from {url}: {response.status_code}")
-    except Exception as e:
-        print(f"Error fetching news articles: {e}")
-        return []
+#     try:
+#         # Send a GET request to fetch the news articles
+#         for url in urls:
+#             response = requests.get(url)
+#             if response.status_code == 200:
+#                 # Example: Parse HTML content to extract article headlines and summaries
+#                 soup = BeautifulSoup(response.content, 'html.parser')
+#                 # BeautifulSoup is a library
+#                 # Implement logic to extract headlines and summaries from the HTML content
+#                 # Append the extracted data to the articles list
+#             else:
+#                 print(f"Failed to fetch news articles from {url}: {response.status_code}")
+#     except Exception as e:
+#         print(f"Error fetching news articles: {e}")
+#         return []
 
 # Example usage:
-news_articles = get_articles()
+news_articles = get_news_from_all()
 print(news_articles)
     
 
