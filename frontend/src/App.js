@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import NewsForm from './components/NewsForm';
 import NewsList from './components/NewsList';
+import Navbar from './components/Navbar';
 
 function App() {
     const [news, setNews] = useState([]);
@@ -12,6 +13,7 @@ function App() {
 
     return (
         <div className="App">
+            <Navbar />
             <h1>p-Newspaper</h1>
             <NewsForm onNewsFetched={updateNews} />
             <NewsList news={news} />
