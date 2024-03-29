@@ -1,5 +1,20 @@
 import newspaper
 import datetime
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+
+def opt_news_from_all():
+    """Returns a list of news articles from a set of news sources;
+            Each article is a dictionary with 'title' 'summary' 'url' 'date' (YYYY-MM-DD)
+            Slightly faster from threading!"""
+    siteL=get_news_sites()[:10]
+    finalNews = []
+    with ThreadPoolExecutor(max_workers=100) as executor:
+        result_list = {executor.submit(get_news_from_site, (i)) for i in siteL}
+        for result in as_completed(result_list):
+            print(result.result())
+            finalNews+=result.result()
+    return finalNews
 
 
 def get_news_from_all():
