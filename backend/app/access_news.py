@@ -7,7 +7,7 @@ def opt_news_from_all():
     """Returns a list of news articles from a set of news sources;
             Each article is a dictionary with 'title' 'summary' 'url' 'date' (YYYY-MM-DD)
             Slightly faster from threading!"""
-    siteL=get_news_sites()[:10]
+    siteL=get_news_sites()
     finalNews = []
     with ThreadPoolExecutor(max_workers=100) as executor:
         result_list = {executor.submit(get_news_from_site, (i)) for i in siteL}
