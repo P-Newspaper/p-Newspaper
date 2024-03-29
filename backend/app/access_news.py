@@ -12,7 +12,6 @@ def opt_news_from_all():
     with ThreadPoolExecutor(max_workers=100) as executor:
         result_list = {executor.submit(get_news_from_site, (i)) for i in siteL}
         for result in as_completed(result_list):
-            print(result.result())
             finalNews+=result.result()
     return finalNews
 
