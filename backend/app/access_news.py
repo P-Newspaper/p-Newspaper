@@ -73,7 +73,7 @@ def get_news_sites():
 
 def get_news_from_site(url):
     """scrapes news articles from the site and returns list containing individual dictionaries of title, keyword, summary per article"""
-    paper = newspaper.build(url, language = 'en', memoize_articles=False)
+    paper = newspaper.build(url, language = 'en', memoize_articles=True)
     articleL = []
     count = 0
 
