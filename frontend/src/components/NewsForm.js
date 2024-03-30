@@ -9,7 +9,7 @@ function NewsForm() {
         event.preventDefault();
         let trimmedInterests = interests.trim();
         if (trimmedInterests === '') {
-            trimmedInterests = 'AI, machine learning, data science';);
+            trimmedInterests = 'AI, machine learning, data science';
         }
         try {
             const response = await axios.post('http://localhost:5000/fetch-news', { interests });
