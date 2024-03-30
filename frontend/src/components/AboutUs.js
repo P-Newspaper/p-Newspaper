@@ -18,7 +18,7 @@ function AboutUs() {
                 </div>
 
                 <div class="right">
-                    <img src="placeholder.png"></img>
+                    <img src="placeholder.png" alt="placeholder"></img>
                 </div>
             </div>
 
@@ -26,35 +26,35 @@ function AboutUs() {
 
             <div class="container2">
                 <div class="member">
-                    <img class="photo" src="../placeholder.jpeg"></img>
+                    <img class="photo" alt="aimee.png" src="aimee.png"></img>
                     <p class="name">Aimee</p>
                 </div>
                 <div class="member">
-                    <img class="photo" src="bennet.png" title='Bennet'></img>
+                    <img class="photo" src="bennet.png" alt="Bennet" title='Bennet'></img>
                     <p class="name">Bennet</p>
                 </div>
                 <div class="member">
-                    <img class="photo" src="angie.png" title='Angie'></img>
+                    <img class="photo" src="angie.png" alt='Angie' title='Angie'></img>
                     <p class="name">Angie</p>
                 </div>
                 <div class="member">
-                    <img class="photo" src="angelina.png" title='Angelina'></img>
+                    <img class="photo" src="angelina.png" alt='Angelina' title='Angelina'></img>
                     <p class="name">Angelina</p>
                 </div>
                 <div class="member">
-                    <img class="photo" src="tyler.png" title='Tyler'></img>
+                    <img class="photo" src="tyler.png" alt='Tyler' title='Tyler'></img>
                     <p class="name">Tyler</p>
                 </div>
                 <div class="member">
-                    <img class="photo" src="talia.png" title='Talia'></img>
+                    <img class="photo" src="talia.png" alt='Talia' title='Talia'></img>
                     <p class="name">Talia</p>
                 </div>
                 <div class="member">
-                    <img class="photo" src="kayln.png" title='Kayln'></img>
+                    <img class="photo" src="kayln.png" alt='Kayln' title='Kayln'></img>
                     <p class="name">Kayln</p>
                 </div>
                 <div class="member">
-                    <img class="photo" src="emily.png" title='Emily'></img>
+                    <img class="photo" src="emily.png" alt='Emily' title='Emily'></img>
                     <p class="name">Emily</p>
                 </div>
             </div>
