@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import '../newsformstyles.css'; 
 
 function NewsForm() {
     const [interests, setInterests] = useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        let trimmedInterests = interests.trim();
+        if (trimmedInterests === '') {
+            trimmedInterests = 'AI, machine learning, data science';
+        }
         try {
             const response = await axios.post('http://localhost:5000/fetch-news', { interests });
-            console.log(response.data); 
+            console.log(response.data);
         } catch (error) {
             console.error('Error fetching news:', error);
         }
@@ -16,45 +21,29 @@ function NewsForm() {
 
     return (
         <div>
-            <div><br></br><strong style={{display: 'flex', justifyContent: 'center', fontSize: '40px', fontFamily: 'Kite One'}}>Welcome to p-Newspaper</strong></div>
-            <form onSubmit={handleSubmit} style={{display: 'flex', justifyContent: 'center'}}>
-                <div>
-                    <br></br> 
-                    <div><label htmlFor="interests" >What do you want to read about today?</label></div>
-                    <br></br>
-                    <div>
+            <div><br></br><strong className="top-text">Welcome to p-Newspaper!</strong></div>
+            <form onSubmit={handleSubmit} className="form-container">
+                <div className="input-container">
+                    <label htmlFor="interests">What do you want to read about today?</label>
+                    <div className="text-container">
                         <textarea
                             id="interests"
                             value={interests}
                             onChange={(e) => setInterests(e.target.value)}
-                            placeholder="Enter your interests"
-                            style={{
-                                color: 'black',
-                                backgroundColor: '#e6e6e6', 
-                                padding: 10, 
-                                borderRadius: 10, 
-                                justifyContent: "center",
-                                borderColor: '#e6e6e6',
-                                width: window.innerWidth*0.7,
-                                height: window.innerHeight*0.15
-                                
-                            }}
+                            placeholder="What is the latest news on AI, machine learning, and data science?"
+                            className="textarea-input"
                         />
-                        <style> 
-                        {` 
-                            ::placeholder { 
-                                color: black; 
-                            }`
-                        } 
-                        </style>
+                    </div>
+                    <div className="button-container">
+                        <button type="submit" className="submit-button">
+                            Go ➔
+                        </button>
                     </div>
                     <br></br>
-                    <div><button type="submit" style={{justifyContent: "center"}}>Fetch News</button></div>
                 </div>
             </form>
         </div>
     );
 }
-
 
 export default NewsForm;
