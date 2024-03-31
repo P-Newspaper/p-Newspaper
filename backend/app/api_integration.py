@@ -1,6 +1,6 @@
 from openai import OpenAI
-from access_news import get_news_from_all
-from config import Config
+from .access_news import get_news_from_all, opt_news_from_all
+from .config import Config
 
 
 def get_openai_client():
@@ -20,43 +20,45 @@ def create_prompt(news_articles, user_selected_interests, user_typed_interests):
     prompt += "\n" + ", ".join(user_selected_interests)
     prompt += "\nHere is a description of what the user wants to read about today: "
     prompt += user_typed_interests
-    prompt += "\nIn the same format inputted, output the headlines and summaries that are most relevant to these interests, in order of relevance. Do not output anything else"
+    prompt += "\nIn the same format that the articles were inputted, output the headlines, summaries, published dates, and URLs that are most relevant to these interests, in order of relevance. Do not output anything else."
     return prompt
  
 
-# Example usage:
-# news_articles = get_news_from_site('http://cnn.com')
-
-# first_20_articles = (get_news_from_site(news_articles))[:20]
-
-# # # Iterate and print each article
-# for article in first_20_articles:
-#      print(article)
-    
-
-def filter_news(news_headlines, user_selected_interests, user_typed_interests):
+def filter_news(user_selected_interests, user_typed_interests):
     """"""
     client = get_openai_client()
 
-    prompt = create_prompt(news_headlines, user_selected_interests, user_typed_interests)
+    # news_list = opt_news_from_all()
+    # news_list_filtered = news_list[:100]
+    news_list_filtered = [{"title": "Global Leaders Meet to Address Climate Change Urgency", "summary": "In a landmark summit held in Paris, leaders from over 50 nations convened to discuss actionable strategies against the escalating threat of climate change.", "url": "www.news.com", "date": "2/3/2023"}, {"title": "Record-Breaking Marathon Victory Shatters Decades-Old Record", "summary": "Ethiopian runner, Alemu Bekele, made history at the Berlin Marathon by breaking a two-decade-old world record, finishing in an astonishing time of 2:01:39.", "url": "www.news2.com", "date":"3/234/333"}]
+
+
+    prompt = create_prompt(news_list_filtered, user_selected_interests, user_typed_interests)
+    print(prompt)
+
     stream = client.chat.completions.create(
         model="gpt-4",
         messages=[{"role": "user", "content": prompt}],
         stream=True,
     )
+
+    response_content = []
+
     for chunk in stream:
         if chunk.choices[0].delta.content is not None:
-            print(chunk.choices[0].delta.content, end="")
+            response_content.append(chunk.choices[0].delta.content)
 
-# Example usage:
-print("RUNNING")
+    full_response = "".join(response_content)
 
-# news_headlines = get_news_from_all()[:100]
+    
+    return full_response
+ 
+# # Example usage:
 
-news_headlines = [{"title": "Global Leaders Meet to Address Climate Change Urgency", "summary": "In a landmark summit held in Paris, leaders from over 50 nations convened to discuss actionable strategies against the escalating threat of climate change.", "url": "www.news.com", "date": "2/3/2023"}, {"title": "Record-Breaking Marathon Victory Shatters Decades-Old Record", "summary": "Ethiopian runner, Alemu Bekele, made history at the Berlin Marathon by breaking a two-decade-old world record, finishing in an astonishing time of 2:01:39.", "url": "www.news2.com", "date":"3/234/333"}]
-user_selected_interests = ["sports", "politics", "entertainment"]
-user_typed_interests = "I would like to read about new stories in sports and politics today."
-filter_news(news_headlines, user_selected_interests, user_typed_interests)
-print("DONE")
+# # news_headlines = [{"title": "Global Leaders Meet to Address Climate Change Urgency", "summary": "In a landmark summit held in Paris, leaders from over 50 nations convened to discuss actionable strategies against the escalating threat of climate change.", "url": "www.news.com", "date": "2/3/2023"}, {"title": "Record-Breaking Marathon Victory Shatters Decades-Old Record", "summary": "Ethiopian runner, Alemu Bekele, made history at the Berlin Marathon by breaking a two-decade-old world record, finishing in an astonishing time of 2:01:39.", "url": "www.news2.com", "date":"3/234/333"}]
+# user_selected_interests = ["sports", "politics", "entertainment"]
+# user_typed_interests = "I would like to read about new stories in sports and politics today."
+# # filter_news(user_selected_interests, user_typed_interests)
+
 
     

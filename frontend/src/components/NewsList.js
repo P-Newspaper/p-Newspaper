@@ -4,7 +4,7 @@ function NewsList({ news }) {
   return (
     <div>
       <h2>News Stories</h2>
-      {/* <ul>
+      <ul>
         {news.map((story, index) => (
           <li key={index}>
             <a href={story.url} target="_blank" rel="noopener noreferrer">
@@ -12,8 +12,7 @@ function NewsList({ news }) {
             </a>
           </li>
         ))}
-      </ul> */}
-      {news}
+      </ul>
     </div>
   );
 }
