@@ -1,7 +1,7 @@
 from newspaper import Article
 from newspaper import build
 import requests
-from api_integration import filter_news
+from .api_integration import filter_news
 
 # Placeholder for fetching news based on interests using Newspaper3k and ChatGPT API
 def fetch_news(interests):
