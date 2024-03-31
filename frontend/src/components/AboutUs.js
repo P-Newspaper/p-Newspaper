@@ -1,6 +1,6 @@
 import React from 'react';
-import '../aboutUsStyles.css'
-import '../globalStyle.css'
+import '../styles/aboutUs.css'
+import '../styles/global.css'
 
 function AboutUs() {
     return (

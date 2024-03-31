@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import axios from 'axios';
-import '../landingAndResults.css'; 
+import '../styles/landingAndResults.css'; 
 import { useNavigate } from 'react-router-dom';
 
 function NonUserLanding() {
