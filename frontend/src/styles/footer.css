@@ -1,0 +1,70 @@
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dce0e6;
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+}
+
+.footer-text {
+    font-size: 16px;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+}
+
+.pai img {
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+}
+
+.pai :hover {
+    color: #fff;
+    border-radius: 5px;
+    width: 25px;
+    height: 29px;
+}
+
+.insta img {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
+
+.insta :hover {
+    color: #fff;
+    border-radius: 5px;
+    width: 30px;
+    height: 34px;
+}
+
+.github img {
+    width: 27px;
+    height: 27px;
+    margin-right: 20px;
+}
+
+.github :hover {
+    color: #fff;
+    border-radius: 5px;
+    width: 27px;
+    height: 31px;
+}
+
+.linkedin img {
+    width: 32px;
+    height: 32px;
+}
+
+.linkedin :hover {
+    color: #fff;
+    border-radius: 5px;
+    width: 32px;
+    height: 36px;
+}
