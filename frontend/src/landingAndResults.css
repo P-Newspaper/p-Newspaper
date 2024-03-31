@@ -65,6 +65,7 @@
     align-items: center;
     font-family: 'Poppins', sans-serif;
     font-size: 15px;
+    text-decoration: none;
 }
 
 .submit-button:hover {

@@ -1,22 +1,38 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import '../newsformstyles.css'; 
+// import axios from 'axios';
+import '../landingAndResults.css'; 
+import { useNavigate } from 'react-router-dom';
 
-function NewsForm() {
+function NonUserLanding() {
     const [interests, setInterests] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        let trimmedInterests = interests.trim();
-        if (trimmedInterests === '') {
-            trimmedInterests = 'AI, machine learning, data science';
+        console.log("Form submitted")
+
+        const fakeResponse = {
+            data: {
+                articles: [
+                    {title: "Article 1", content: "Content 1"},
+                    {title: "Article 2", content: "Content 2"},
+                ]
+            }
         }
-        try {
-            const response = await axios.post('http://localhost:5000/fetch-news', { interests });
-            console.log(response.data);
-        } catch (error) {
-            console.error('Error fetching news:', error);
-        }
+        console.log("fake response data: ", fakeResponse.data)
+        navigate('/submit', { state: fakeResponse.data });
+
+        // let trimmedInterests = interests.trim();
+        // if (trimmedInterests === '') {
+        //     trimmedInterests = 'AI, machine learning, data science';
+        // }
+        // try {
+        //     const response = await axios.post('http://localhost:5000/fetch-news', { interests });
+        //     console.log(response.data);
+        //     navigate('/submit');
+        // } catch (error) {
+        //     console.error('Error fetching news:', error);
+        // }
     };
 
     return (
@@ -46,4 +62,4 @@ function NewsForm() {
     );
 }
 
-export default NewsForm;
+export default NonUserLanding;
