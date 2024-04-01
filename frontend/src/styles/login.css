@@ -1,0 +1,15 @@
+.container {
+    justify-content: center;
+    align-items: center;
+}
+
+.username-container {
+    color: "black";
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    justify-content: "center";
+    border-color: "#e6e6e6";
+    width: 300;
+    height: 20;
+}
