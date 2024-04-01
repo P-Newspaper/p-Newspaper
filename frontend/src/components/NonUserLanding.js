@@ -1,14 +1,27 @@
 import React, { useState } from "react";
-// import axios from 'axios';
+import axios from "axios";
 import "../styles/landingAndResults.css";
 import { useNavigate } from "react-router-dom";
 
 function NonUserLanding() {
   const [interests, setInterests] = useState("");
   const navigate = useNavigate();
+  const [news, setNews] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    try {
+      const response = await axios.post("http://localhost:5000/fetch-news", {
+        interests,
+      });
+      setNews(response.data);
+      console.log("fake response data: ", response.data);
+      navigate("/submit", { state: response.data });
+    } catch (error) {
+      console.error("Error fetching news:", error);
+    }
+
     console.log("Form submitted");
 
     const fakeResponse = {
@@ -19,8 +32,6 @@ function NonUserLanding() {
         ],
       },
     };
-    console.log("fake response data: ", fakeResponse.data);
-    navigate("/submit", { state: fakeResponse.data });
 
     // let trimmedInterests = interests.trim();
     // if (trimmedInterests === '') {

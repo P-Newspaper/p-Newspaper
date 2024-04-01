@@ -1,5 +1,5 @@
 import sys
-import newspaper3k
+import newspaper
 import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -88,11 +88,11 @@ def get_articles_lastM(articleL):
 
 def get_news_sites():
     """gets most popular news sites"""
-    return newspaper3k.popular_urls()
+    return newspaper.popular_urls()
 
 def get_news_from_site(url):
     """scrapes news articles from the site and returns list containing individual dictionaries of title, keyword, summary per article"""
-    paper = newspaper3k.build(url, language = 'en', memoize_articles=False)
+    paper = newspaper.build(url, language = 'en', memoize_articles=False)
     articleL = []
     last_month = datetime.date.today() - datetime.timedelta(days=30)
     last_month = last_month.strftime('%Y-%m-%d')

@@ -1,18 +1,19 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-function NewsList({ news }) {
+function NonUserResults({ news }) {
   const location = useLocation();
   const data = location.state;
 
   return (
     <div>
-      {data.articles.map((article, index) => (
+      {data}
+      {/* {data.articles.map((article, index) => (
         <div key={index}>
           <h2>{article.title}</h2>
           <p>{article.content}</p>
         </div>
-      ))}
+      ))} */}
       {/* <h2>News Stories</h2>
             <ul>
                 {news.map((story, index) => (
@@ -25,4 +26,4 @@ function NewsList({ news }) {
   );
 }
 
-export default NewsList;
+export default NonUserResults;
