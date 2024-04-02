@@ -59,7 +59,7 @@
 }
 
 .textarea-input::placeholder {
-    color: grey;
+    color: rgb(154, 154, 154);
     font-family: 'Poppins' sans-serif;
     font-size: 15px;
 }

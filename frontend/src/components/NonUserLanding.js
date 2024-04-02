@@ -51,7 +51,7 @@ function NonUserLanding() {
               id="interests"
               value={interests}
               onChange={(e) => setInterests(e.target.value)}
-              placeholder="What is the latest news on AI, machine learning, and data science?"
+              placeholder="Example: I want to learn more about AI, machine learning, and data science. I am also interested in basketball and cooking."
               className="textarea-input"
             />
           </div>
