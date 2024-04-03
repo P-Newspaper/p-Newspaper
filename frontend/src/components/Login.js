@@ -1,75 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/login.css'
 
 
 function Login() {
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleLogin = async (event) => {
+        event.preventDefault();
+        console.log('Username:', username);
+        console.log('Password', password);
+        // send the username and password to the server
+    }
     
     return (
         <div className="container">
-            <div className="Sign-In"> Sign in <br></br></div>
+            <h2>User Login</h2>
             <div className="username-container"> 
                 <textarea
                     id = "username"
+                    value = {username}
+                    onChange = {(e) => setUsername(e.target.value)}
                     placeholder="username"
-                />
-            </div>
-
-            <div className="email-container"> 
-                <textarea
-                    id = "email"
-                    placeholder="email"
-                    style={{
-                        color: "black",
-                        backgroundColor: "#e6e6e6",
-                        padding: 10,
-                        borderRadius: 10,
-                        justifyContent: "center",
-                        borderColor: "#e6e6e6",
-                        width: 300,
-                        height: 20,
-                      }}
                 />
             </div>
 
             <div className="password-container"> 
                 <textarea
                     id = "password"
+                    value = {password}
+                    onChange = {(e) => setPassword(e.target.value)}
                     placeholder="password"
-                    style={{
-                        color: "black",
-                        backgroundColor: "#e6e6e6",
-                        padding: 10,
-                        borderRadius: 10,
-                        justifyContent: "center",
-                        borderColor: "#e6e6e6",
-                        width: 300,
-                        height: 20,
-                      }}
                 />
             </div>
 
-            <div className="passwordconfirm-container"> 
-                <textarea
-                    id = "passwordconfirm"
-                    placeholder="Confirm Password"
-                    style={{
-                        color: "black",
-                        backgroundColor: "#e6e6e6",
-                        padding: 10,
-                        borderRadius: 10,
-                        justifyContent: "center",
-                        borderColor: "#e6e6e6",
-                        width: 300,
-                        height: 20,
-                      }}
-                />
-            </div>
+            <p>Forgot password?</p>
 
-            <div className="button-container"> 
-                <button type="submit" className="submit-button">
-                    Create an account
+            <div className="loginbutton"> 
+                <button type="submit" className="loginbutton" onClick = {handleLogin}>
+                    Login
                 </button>
             </div>
+
+            <p>New user? Create an account</p>
 
 
 
