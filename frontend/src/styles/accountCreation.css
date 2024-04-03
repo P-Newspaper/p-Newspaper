@@ -11,15 +11,11 @@
 
 h2{
     margin-bottom: 20px;
-    position: relative;
-    /* left: -6vw; */
-    /* align-self: flex-start; */
-    /* margin-left: calc((20vw - 270px) / 2); */
+    position: relative
 }
 
 button{
     border-radius: 10px;
-    /* padding: 10px; */
     border-color: #e6e6e6;
     height: 33px;
     background-color: #e6e6e6;
@@ -33,22 +29,10 @@ button{
     transition: background 0.5s ease;
 }
 
-/* .username-container {
-    color: "black";
-    background-color: white;
-    padding: 10px;
-    border-radius: 10px;
-    justify-content: "center";
-    border-color: "#e6e6e6";
-    width: 300;
-    height: 20;
-} */
-
 textarea {
     background-color: #e6e6e6;
     border-color: #e6e6e6;
     border-radius: 10px;
-    /* width: 270px; */
     width: 20vw;
     height: 23px;
     padding: 10px;
@@ -58,24 +42,3 @@ textarea {
     line-height: 23px;
 
 }
-
-
-/* textarea {
-    color: black;
-    background-color: "#e6e6e6";
-    padding: 10;
-    border-radius: 10;
-    justify-content: center;
-    border-color: #e6e6e6;
-    width: 300;
-    height: 20;
-} */
-    
-    /* color: "black",
-        backgroundColor: "#e6e6e6",
-        padding: 10,
-        borderRadius: 10,
-        justifyContent: "center",
-        borderColor: "#e6e6e6",
-        width: 300,
-        height: 20, */

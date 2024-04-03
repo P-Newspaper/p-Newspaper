@@ -1,31 +1,20 @@
 .container {
     position: relative;
-    /* top: 100px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 85vh;
     font-family: 'Poppins', sans-serif;
-    /* width: 20vw; */
 
 }
 
 h2{
     margin-bottom: 20px;
-    /* margin-left: calc((20vw - 270px) / 2); */
-    /* position: relative; */
-    /* left: -6vw; */
-    /* align-self: flex-start; */
-    /* margin-left: calc((20vw - 270px) / 2); */
-}
-
-p {
 }
 
 button{
     border-radius: 10px;
-    /* padding: 10px; */
     border-color: #e6e6e6;
     height: 33px;
     background-color: #e6e6e6;
@@ -39,26 +28,13 @@ button{
     transition: background 0.5s ease;
 }
 
-/* .username-container {
-    color: "black";
-    background-color: white;
-    padding: 10px;
-    border-radius: 10px;
-    justify-content: "center";
-    border-color: "#e6e6e6";
-    width: 300;
-    height: 20;
-} */
-
 textarea {
     background-color: #e6e6e6;
     border-color: #e6e6e6;
     border-radius: 10px;
-    /* width: 270px; */
     width: 20vw;
     height: 33px;
     padding: 10px;
-    /* margin-bottom: 30px; */
     resize: horizontal;
     font-family: 'Poppins', sans-serif;
     line-height: 33px;
@@ -68,24 +44,3 @@ textarea {
 .username-container{
     margin-bottom: 30px;
 }
-
-
-/* textarea {
-    color: black;
-    background-color: "#e6e6e6";
-    padding: 10;
-    border-radius: 10;
-    justify-content: center;
-    border-color: #e6e6e6;
-    width: 300;
-    height: 20;
-} */
-    
-    /* color: "black",
-        backgroundColor: "#e6e6e6",
-        padding: 10,
-        borderRadius: 10,
-        justifyContent: "center",
-        borderColor: "#e6e6e6",
-        width: 300,
-        height: 20, */
