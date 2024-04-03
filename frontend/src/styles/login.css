@@ -17,20 +17,15 @@
 .textinput {
     font-size: 15px;
     font-family: 'Poppins', sans-serif;
-}
-
-.loginbutton:hover{
-    background-color: #9c9c9c;
-    border-radius: 10px;
-    color: white;
-    transition: background 0.5s ease;
+    width: 30vh;
 }
 
 .login-button {
     border: 1px solid white;
     background: #3D5779;
     color: white;
-    width: 15vh;
+    padding: 20px;
+    width: 20vh;
     height: 35px;
     border-radius: 30px;
     display: flex;
@@ -59,4 +54,11 @@
 
 .create-account-link:hover{
     text-decoration: none;
+}
+
+.error {
+    color: red;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 10px;
 }

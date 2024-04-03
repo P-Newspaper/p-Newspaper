@@ -56,7 +56,7 @@ function NonUserLanding() {
             />
           </div>
           <div className="button-container">
-            <button type="submit" className="submit-button">
+            <button type="button" className="go-button" onClick={handleSubmit}>
               Go ➔
             </button>
           </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/accountCreation.css'
-
+import { useNavigate } from 'react-router-dom';
 
 function AccountCreation() {
     
@@ -9,55 +9,52 @@ function AccountCreation() {
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     // create actual account
-    // }
+    const navigate = useNavigate();
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        navigate('/onboarding');
+        console.log('Username:', username);
+        console.log('Email:', email);
+        console.log('Password', password);
+        console.log('Password Confirm', passwordConfirm);
+        // create actual account
+    }
 
     return (
         <div className="container">
             <h2>Sign in</h2>
-            <div className="username-container"> 
-                <textarea
-                    id = "username"
-                    value = {username}
-                    onChange = {(e) => setUsername(e.target.value)}
-                    placeholder="username"
-                />
-            </div>
+            <textarea className = "textinput"
+                id = "username"
+                value = {username}
+                onChange = {(e) => setUsername(e.target.value)}
+                placeholder="Username"
+            />
 
-            <div className="email-container"> 
-                <textarea
-                    id = "email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="email"
-                />
-            </div>
+            <textarea className = "textinput"
+                id = "email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+            />
 
-            <div className="password-container"> 
-                <textarea
-                    id = "password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="password"
-                />
-            </div>
+            <textarea className = "textinput"
+                id = "password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+            />
 
-            <div className="passwordconfirm-container"> 
-                <textarea
-                    id = "passwordconfirm"
-                    value={passwordConfirm}
-                    onChange={(e) => setPasswordConfirm(e.target.value)}
-                    placeholder="retype password"
-                />
-            </div>
+            <textarea className = "textinput"
+                id = "passwordconfirm"
+                value={passwordConfirm}
+                onChange={(e) => setPasswordConfirm(e.target.value)}
+                placeholder="Re-enter password"
+            />
 
-            <div className="createbutton"> 
-                <button type="submit" className="createbutton">
-                    Create an account
-                </button>
-            </div>
+            <button type="button" className="login-button" onClick={handleSubmit}>
+                Create account
+            </button>
 
 
 

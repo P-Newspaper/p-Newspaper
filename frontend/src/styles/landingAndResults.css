@@ -22,8 +22,6 @@
     margin-top: 5%;
 }
 
-
-
 .input-container {
     width: 70vw; 
     margin-bottom: 20px;
@@ -75,14 +73,14 @@
     display:flex;
     justify-content: flex-end;
     width: 100%;
-    margin-top: 5px;
 }
 
-.submit-button {
+.go-button {
     border: 1px solid white;
     background: white;
-    padding: 15px;
+    padding: 20px;
     border-radius: 30px;
+    width: 10vh;
     color: #2b3d55;
     transition: background 0.5s ease;
     display: flex;
@@ -93,7 +91,7 @@
     text-decoration: none;
 }
 
-.submit-button:hover {
+.go-button:hover {
     background: #2b3d55;
     color: white;
 }

@@ -36,7 +36,6 @@ function UserLanding() {
 
     return (
         <div>
-            <div><br></br><label className="top-text">Welcome to p-Newspaper!</label></div>
             <form onSubmit={handleSubmit} className="form-container">
                 <div className="input-container">
                     <label htmlFor="interests">What do you want to read about today?</label>
@@ -50,7 +49,7 @@ function UserLanding() {
                         />
                     </div>
                     <div className="button-container">
-                        <button type="submit" className="submit-button">
+                        <button type="button" className="go-button">
                             Go ➔
                         </button>
                     </div>

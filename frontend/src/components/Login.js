@@ -8,15 +8,23 @@ function Login() {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    // const [error, setError] = useState(null);
 
     const navigate = useNavigate();
 
     const handleLogin = async (event) => {
         event.preventDefault();
-        navigate('/onboarding')
+
+        // setError(null);
+        // if (!username || !password) {
+        //     setError('Username and password are required');
+        //     return;
+        // }
+        
         console.log('Username:', username);
         console.log('Password', password);
         // send the username and password to the server
+        navigate('/userlanding')
     }
     
     return (
@@ -24,6 +32,7 @@ function Login() {
             <div className="title">
                 Login
             </div>
+            {/* {error && <div className="error">{error}</div>} */}
             <textarea className="textinput"
                 id = "username"
                 value = {username}
