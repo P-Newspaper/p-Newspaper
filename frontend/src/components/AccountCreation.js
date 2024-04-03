@@ -9,10 +9,10 @@ function AccountCreation() {
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // create actual account
-    }
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     // create actual account
+    // }
 
     return (
         <div className="container">

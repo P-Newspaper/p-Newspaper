@@ -3,22 +3,20 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 85vh;
     font-family: 'Poppins', sans-serif;
-
 }
 
-h2{
+.title{
+    font-size: 25px;
+    font-weight: bold;
+    color: #2b3d55;
     margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
 }
 
-button{
-    border-radius: 10px;
-    border-color: #e6e6e6;
-    height: 33px;
-    background-color: #e6e6e6;
-    width: 150px;
+.textinput {
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .loginbutton:hover{
@@ -28,19 +26,37 @@ button{
     transition: background 0.5s ease;
 }
 
-textarea {
-    background-color: #e6e6e6;
-    border-color: #e6e6e6;
-    border-radius: 10px;
-    width: 20vw;
-    height: 33px;
-    padding: 10px;
-    resize: horizontal;
-    font-family: 'Poppins', sans-serif;
-    line-height: 33px;
-
+.login-button {
+    border: 1px solid white;
+    background: #3D5779;
+    color: white;
+    width: 15vh;
+    height: 35px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.5s ease, color 0.5s ease;
+    text-decoration: none;
+    font-size: 15px;
 }
 
-.username-container{
-    margin-bottom: 30px;
+.login-button:hover {
+    background: white;
+    color: #2b3d55;
+}
+
+
+.create-account{
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.create-account-link{
+    color: #3D5779;
+    font-size: 15px;
+}
+
+.create-account-link:hover{
+    text-decoration: none;
 }

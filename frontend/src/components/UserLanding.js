@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import axios from 'axios';
 import "../styles/landingAndResults.css";
 import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
 function UserLanding() {
     const [interests, setInterests] = useState('');

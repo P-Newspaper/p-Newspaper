@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/login.css'
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 function Login() {
@@ -7,8 +9,11 @@ function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    const navigate = useNavigate();
+
     const handleLogin = async (event) => {
         event.preventDefault();
+        navigate('/onboarding')
         console.log('Username:', username);
         console.log('Password', password);
         // send the username and password to the server
@@ -16,36 +21,31 @@ function Login() {
     
     return (
         <div className="container">
-            <h2>User Login</h2>
-            <div className="username-container"> 
-                <textarea
-                    id = "username"
-                    value = {username}
-                    onChange = {(e) => setUsername(e.target.value)}
-                    placeholder="username"
-                />
+            <div className="title">
+                Login
             </div>
+            <textarea className="textinput"
+                id = "username"
+                value = {username}
+                onChange = {(e) => setUsername(e.target.value)}
+                placeholder="Username"
+            />
 
-            <div className="password-container"> 
-                <textarea
-                    id = "password"
-                    value = {password}
-                    onChange = {(e) => setPassword(e.target.value)}
-                    placeholder="password"
-                />
+             
+            <textarea className='textinput'
+                id = "password"
+                value = {password}
+                onChange = {(e) => setPassword(e.target.value)}
+                placeholder="Password"
+            />
+
+            <button type="button" className="login-button" onClick = {handleLogin}>
+                Login
+            </button>
+
+            <div className="create-account">
+                Don't have an account? <Link className="create-account-link" to="/createaccount">Create account</Link>
             </div>
-
-            <p>Forgot password?</p>
-
-            <div className="loginbutton"> 
-                <button type="submit" className="loginbutton" onClick = {handleLogin}>
-                    Login
-                </button>
-            </div>
-
-            <p>New user? Create an account</p>
-
-
 
         </div>
     );

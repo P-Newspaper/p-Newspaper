@@ -4,6 +4,8 @@ import NonUserLanding from './components/NonUserLanding';
 import AboutUs from './components/AboutUs'; 
 import Login from './components/Login'; 
 import NonUserResults from './components/NonUserResults';
+import Onboarding from './components/Onboarding';
+import AccountCreation from './components/AccountCreation';
 
 function AppRoutes() {
     return (
@@ -12,6 +14,8 @@ function AppRoutes() {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/login" element={<Login />} />
             <Route path="/submit" element={<NonUserResults />} />
+            <Route path="/onboarding" element={<Onboarding />} />
+            <Route path="/createaccount" element={<AccountCreation />} />
         </Routes>
 
     );
