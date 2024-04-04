@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Project Overview
 
-p-Newspaper aims to connect young people with news that matters to them. By leveraging a personalized stream of news based on user input, we integrate ChatGPT's API and Newspaper3k for web scraping to deliver relevant news stories from a wide array of sources.
+p-Newspaper is a web app that aims to connect young people with news that matters to them while eliminating biases. Integrating OpenAI API to handle user input and Newspaper3k for web scraping, p-Newspaper delivers relevant and interesting news stories from a wide array of sources, centralized on one page.
 
 ## Tech Stack
 
@@ -16,12 +16,13 @@ p-Newspaper aims to connect young people with news that matters to them. By leve
 - React
 - Flask
 - AWS EC2
+- PostgreSQL
 - Docker/Kubernetes
 
 ### Installation
 
 1. Clone the repository:  
-   git clone https://github.com/aimeekco/p-Newspaper.git
+   git clone https://github.com/P-Newspaper/p-Newspaper.git
 2. Install backend dependencies:  
    cd backend  
    pip install -r requirements.txt
