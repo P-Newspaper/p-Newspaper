@@ -7,21 +7,18 @@ function NonUserResults({ news }) {
 
   return (
     <div>
-      {data}
-      {/* {data.articles.map((article, index) => (
-        <div key={index}>
-          <h2>{article.title}</h2>
-          <p>{article.content}</p>
-        </div>
-      ))} */}
-      {/* <h2>News Stories</h2>
-            <ul>
-                {news.map((story, index) => (
-                    <li key={index}>
-                        <a href={story.url} target="_blank" rel="noopener noreferrer">{story.title}</a>
-                    </li>
-                ))}
-            </ul> */}
+      <h2>News Stories</h2>
+      <ul>
+        {data.map((story, index) => (
+          <li key={index}>
+            <a href={story.url} target="_blank" rel="noopener noreferrer">
+              {story.title}
+            </a>
+            <p> Summary: {story.summary} </p>
+            <p> Date Published: {story.date} </p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

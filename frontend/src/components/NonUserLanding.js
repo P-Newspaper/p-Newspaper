@@ -15,23 +15,16 @@ function NonUserLanding() {
       const response = await axios.post("http://localhost:5000/fetch-news", {
         interests,
       });
-      setNews(response.data);
-      console.log("fake response data: ", response.data);
-      navigate("/submit", { state: response.data });
+
+      let parsedData = JSON.parse(response.data);
+      setNews(parsedData);
+      console.log("response data: ", parsedData);
+      navigate("/submit", { state: parsedData });
     } catch (error) {
       console.error("Error fetching news:", error);
     }
 
     console.log("Form submitted");
-
-    const fakeResponse = {
-      data: {
-        articles: [
-          { title: "Article 1", content: "Content 1" },
-          { title: "Article 2", content: "Content 2" },
-        ],
-      },
-    };
 
     // let trimmedInterests = interests.trim();
     // if (trimmedInterests === '') {
