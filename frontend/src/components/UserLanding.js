@@ -21,7 +21,7 @@ function UserLanding() {
             }
         }
         console.log("fake response data: ", fakeResponse.data)
-        navigate('/submit', { state: fakeResponse.data });
+        navigate('/userresults', { state: fakeResponse.data });
     };
 
     const fakeFeed = {
@@ -49,7 +49,7 @@ function UserLanding() {
                         />
                     </div>
                     <div className="button-container">
-                        <button type="button" className="go-button">
+                        <button type="button" className="go-button" onClick={handleSubmit}>
                             Go ➔
                         </button>
                     </div>
