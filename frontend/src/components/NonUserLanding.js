@@ -20,7 +20,7 @@ function NonUserLanding() {
       },
     };
     console.log("fake response data: ", fakeResponse.data);
-    navigate("/submit", { state: fakeResponse.data });
+    navigate("/nonuserresults", { state: fakeResponse.data });
 
     // let trimmedInterests = interests.trim();
     // if (trimmedInterests === '') {
