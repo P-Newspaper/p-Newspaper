@@ -112,3 +112,7 @@
     height: 20vh; 
     font-family: 'Poppins', sans-serif;
 }
+
+.results-container{
+    margin-top: 100px;
+}

@@ -1,12 +1,13 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import "../styles/landingAndResults.css";
 
 function NewsList({ news }) {
   const location = useLocation();
   const data = location.state;
 
   return (
-    <div>
+    <div className="results-container">
       {data.articles.map((article, index) => (
         <div key={index}>
           <h2>{article.title}</h2>
