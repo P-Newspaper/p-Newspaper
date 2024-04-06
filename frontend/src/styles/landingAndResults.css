@@ -1,5 +1,5 @@
 .top-text {
-    margin-top: 5%;
+    margin-top: 150px;
     display: flex;
     justify-content: center;
     font-size: 30px;
@@ -24,7 +24,7 @@
 
 .input-container {
     width: 70vw; 
-    margin-bottom: 20px;
+    margin-top: 50px;
     position: relative;
 }
 
@@ -80,7 +80,7 @@
     background: white;
     padding: 20px;
     border-radius: 30px;
-    width: 10vh;
+    width: 100px;
     color: #2b3d55;
     transition: background 0.5s ease;
     display: flex;
