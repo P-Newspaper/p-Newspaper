@@ -22,8 +22,8 @@ function AccountCreation() {
     }
 
     return (
-        <div className="container">
-            <h2>Sign in</h2>
+        <div className="account-container">
+            <h2>Create An Account</h2>
             <textarea className = "textinput"
                 id = "username"
                 value = {username}

@@ -6,12 +6,17 @@
     background-color: #3D5779;
     color: white;
     padding: 20px 40px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 95%;
 }
 
 .navbar-logo {
@@ -25,8 +30,8 @@
     text-decoration: none;
     padding: 10px 15px;
     transition: background-color 0.3s, color 0.3s;
-    margin-left: 20px;
     border-radius: 30px;
+    margin-left: 10px;
 }
 
 .navbar-links a:hover {
