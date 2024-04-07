@@ -10,7 +10,7 @@ function NewsList({ news }) {
     <div className="results-container">
       {data.articles.map((article, index) => (
         <div key={index}>
-          <h2>{article.title}</h2>
+          <a href="https://www.google.com/" className="results-article-link-text">{article.title}</a>
           <p>{article.content}</p>
         </div>
       ))}
