@@ -1,6 +1,15 @@
 import React from 'react';
-import '../styles/aboutUs.css'
-import '../styles/global.css'
+import '../styles/aboutUs.css';
+import '../styles/global.css';
+import aimee from "../images/aimee.png";
+import angelina from "../images/angelina.png";
+import angie from "../images/angie.png";
+import bennet from "../images/bennet.jpeg";
+import emily from "../images/emily.JPG";
+import kayln from "../images/kayln.png";
+import tyler from "../images/tyler.png";
+import talia from "../images/talia.png";
+
 
 function AboutUs() {
     return (
@@ -26,36 +35,53 @@ function AboutUs() {
 
             <div class="container2">
                 <div class="member">
-                    <img class="photo" alt="aimee.png" src="aimee.png"></img>
-                    <p class="name">Aimee</p>
+                    <img class="photo" alt="aimee.png" src={aimee}></img>
+                    <p class="name">Aimee Co</p>
+                    <p class="name">Computer Science and Math</p>
+                    <p class="name">Pomona '26</p>
                 </div>
                 <div class="member">
-                    <img class="photo" src="bennet.png" alt="Bennet" title='Bennet'></img>
-                    <p class="name">Bennet</p>
+                    <img class="photo" src={bennet} alt="Bennet" title='Bennet'></img>
+                    <p class="name">Bennet Matazzoni</p>
+                    <p class="name">Computer Science</p>
+                    <p class="name">Harvey Mudd '26</p>
                 </div>
                 <div class="member">
-                    <img class="photo" src="angie.png" alt='Angie' title='Angie'></img>
-                    <p class="name">Angie</p>
+                    <img class="photo" src={angie} alt='Angie' title='Angie'></img>
+                    <p class="name">Angie Zhou</p>
+                    <p class="name">Computer Science</p>
+                    <p class="name">Pomona '25</p>
+
                 </div>
                 <div class="member">
-                    <img class="photo" src="angelina.png" alt='Angelina' title='Angelina'></img>
-                    <p class="name">Angelina</p>
+                    <img class="photo" src={angelina} alt='Angelina' title='Angelina'></img>
+                    <p class="name">Angelina Tsai</p>
+                    <p class="name">Computer Science and Physics</p>
+                    <p class="name">Harvey Mudd '26</p>
                 </div>
                 <div class="member">
-                    <img class="photo" src="tyler.png" alt='Tyler' title='Tyler'></img>
-                    <p class="name">Tyler</p>
+                    <img class="photo" src={tyler} alt='Tyler' title='Tyler'></img>
+                    <p class="name">Tyler Headley </p>
+                    <p class="name">Computer Science and Math</p>
+                    <p class="name">Harvey Mudd '26</p>
                 </div>
                 <div class="member">
-                    <img class="photo" src="talia.png" alt='Talia' title='Talia'></img>
-                    <p class="name">Talia</p>
+                    <img class="photo" src={talia} alt='Talia' title='Talia'></img>
+                    <p class="name">Talia Yoo</p>
+                    <p class="name">Computer Science</p>
+                    <p class="name">Harvey Mudd '27</p>
                 </div>
                 <div class="member">
-                    <img class="photo" src="kayln.png" alt='Kayln' title='Kayln'></img>
-                    <p class="name">Kayln</p>
+                    <img class="photo" src={kayln} alt='Kayln' title='Kayln'></img>
+                    <p class="name">Kayln Washington</p>
+                    <p class="name">Computer Science</p>
+                    <p class="name">Pomona '26</p>
                 </div>
                 <div class="member">
-                    <img class="photo" src="emily.png" alt='Emily' title='Emily'></img>
-                    <p class="name">Emily</p>
+                    <img class="photo" src={emily} alt='Emily' title='Emily'></img>
+                    <p class="name">Emily Zhu</p>
+                    <p class="name">Computer Science and Cognitive Science</p>
+                    <p class="name">Pomona '26</p>
                 </div>
             </div>
         </div>

@@ -13,11 +13,11 @@
     text-align: right;
 }
 
-.photo {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-}
+/* .photo {
+    height: 337px;
+    width: 300px;
+    object-fit: fill;
+} */
 
 .member {
     margin:50px;
@@ -32,26 +32,16 @@
 }
 
 .name {
-position: absolute;
-top: 0;
-bottom: 0;
-left: 0;
-right: 0;
-background: rgba(29, 106, 154, 0.72);
-color: #fff;
-visibility: hidden;
-opacity: 0;
-
-/* transition effect. not necessary */
-transition: opacity .2s, visibility .2s;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #000000;
+    margin-bottom: 1px;
 }
 
-/* .member:hover .name {
-visibility: visible;
-opacity: 1;
-} */
-
-img:hover {
-    filter: brightness(70%);
-    /* You can adjust the percentage to control the level of dimming */
+.photo img {
+    width: 300 px;
+    height: 337 px;
 }
