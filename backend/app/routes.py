@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from .models import fetch_news
 from .api_integration import filter_news
+from flask import current_app as app
 
 main = Blueprint('main', __name__)
 
