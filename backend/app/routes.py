@@ -8,12 +8,9 @@ main = Blueprint('main', __name__)
 def get_news():
     data = request.get_json()
     user_typed_interests = data.get('interests', [])
-    
-    # Hard-coded interests, change later to get user's pre-selected preferences
-    user_selected_interests = ["sports", "politics", "entertainment"]
 
     try:
-        news_stories = filter_news(user_selected_interests, user_typed_interests)
+        news_stories = filter_news(user_typed_interests)
         return jsonify(news_stories), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
