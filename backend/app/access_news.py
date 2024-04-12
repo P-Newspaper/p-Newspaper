@@ -1,8 +1,7 @@
 import sys
-import newspaper3k
+import newspaper as newspaper3k
 import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
-
 
 def opt_news_from_all():
     """Returns a list of news articles from a set of news sources;
@@ -118,4 +117,3 @@ def get_news_from_site(url):
         except:
             pass
     return articleL
-
