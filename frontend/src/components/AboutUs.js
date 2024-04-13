@@ -4,8 +4,8 @@ import '../styles/global.css';
 import aimee from "../images/aimee.png";
 import angelina from "../images/angelina.png";
 import angie from "../images/angie.png";
-import bennet from "../images/bennet.jpeg";
-import emily from "../images/emily.JPG";
+import bennet from "../images/bennet.png";
+import emily from "../images/emily.png";
 import kayln from "../images/kayln.png";
 import tyler from "../images/tyler.png";
 import talia from "../images/talia.png";
@@ -35,51 +35,51 @@ function AboutUs() {
 
             <div class="container2">
                 <div class="member">
-                    <img class="photo" alt="aimee.png" src={aimee}></img>
-                    <p class="name">Aimee Co</p>
+                    <img alt="aimee.png" src={aimee}></img>
+                    <p class="name"><span style={{ fontWeight: 'bold' }}>Aimee Co</span></p>
                     <p class="name">Computer Science and Math</p>
                     <p class="name">Pomona '26</p>
                 </div>
                 <div class="member">
-                    <img class="photo" src={bennet} alt="Bennet" title='Bennet'></img>
-                    <p class="name">Bennet Matazzoni</p>
+                    <img src={bennet} alt="Bennet" title='Bennet'></img>
+                    <p class="name"><span style={{ fontWeight: 'bold' }}>Bennet Matazzoni</span></p>
                     <p class="name">Computer Science</p>
                     <p class="name">Harvey Mudd '26</p>
                 </div>
                 <div class="member">
-                    <img class="photo" src={angie} alt='Angie' title='Angie'></img>
-                    <p class="name">Angie Zhou</p>
+                    <img src={angie} alt='Angie' title='Angie'></img>
+                    <p class="name"><span style={{ fontWeight: 'bold' }}>Angie Zhou</span></p>
                     <p class="name">Computer Science</p>
                     <p class="name">Pomona '25</p>
 
                 </div>
                 <div class="member">
-                    <img class="photo" src={angelina} alt='Angelina' title='Angelina'></img>
-                    <p class="name">Angelina Tsai</p>
+                    <img src={angelina} alt='Angelina' title='Angelina'></img>
+                    <p class="name"><span style={{ fontWeight: 'bold' }}>Angelina Tsai</span></p>
                     <p class="name">Computer Science and Physics</p>
                     <p class="name">Harvey Mudd '26</p>
                 </div>
                 <div class="member">
-                    <img class="photo" src={tyler} alt='Tyler' title='Tyler'></img>
-                    <p class="name">Tyler Headley </p>
+                    <img src={tyler} alt='Tyler' title='Tyler'></img>
+                    <p class="name"><span style={{ fontWeight: 'bold' }}>Tyler Headley</span> </p>
                     <p class="name">Computer Science and Math</p>
                     <p class="name">Harvey Mudd '26</p>
                 </div>
                 <div class="member">
-                    <img class="photo" src={talia} alt='Talia' title='Talia'></img>
-                    <p class="name">Talia Yoo</p>
+                    <img src={talia} alt='Talia' title='Talia'></img>
+                    <p class="name"><span style={{ fontWeight: 'bold' }}>Talia Yoo</span></p>
                     <p class="name">Computer Science</p>
                     <p class="name">Harvey Mudd '27</p>
                 </div>
                 <div class="member">
-                    <img class="photo" src={kayln} alt='Kayln' title='Kayln'></img>
-                    <p class="name">Kayln Washington</p>
+                    <img src={kayln} alt='Kayln' title='Kayln'></img>
+                    <p class="name"><span style={{ fontWeight: 'bold' }}>Kayln Washington</span></p>
                     <p class="name">Computer Science</p>
                     <p class="name">Pomona '26</p>
                 </div>
                 <div class="member">
-                    <img class="photo" src={emily} alt='Emily' title='Emily'></img>
-                    <p class="name">Emily Zhu</p>
+                    <img src={emily} alt='Emily' title='Emily'></img>
+                    <p class="name"><span style={{ fontWeight: 'bold' }}>Emily Zhu</span></p>
                     <p class="name">Computer Science and Cognitive Science</p>
                     <p class="name">Pomona '26</p>
                 </div>
