@@ -20,9 +20,12 @@ function AboutUs() {
                 <div>
                     <h2 class="left">Our Mission:</h2>
                     <p class="left">
+                        
                         Many young people are out of touch with the news, making it difficult for them to create a well rounded 
-                        and informed perspective on the world. In order to keep the younger generations more informed, we propose 
-                        p-Newspaper, which will supply people with a personalized stream of news that is interesting to them.
+                        and informed perspective on the world. By enabling users to specify their interests, this website tailors
+                        a curated news stream to each indivudal's preferences. Through personalized news delivery, we aim to 
+                        bridge the gap between young people and global affiars, fostering a more connected and socially 
+                        conscious society.
                     </p>
                 </div>
 
