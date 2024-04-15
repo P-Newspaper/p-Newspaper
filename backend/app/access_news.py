@@ -7,9 +7,9 @@ def opt_news_from_all():
     """Returns a list of news articles from a set of news sources;
             Each article is a dictionary with 'title' 'summary' 'url' 'date' (YYYY-MM-DD)
             Slightly faster from threading!"""
-    siteL=['http://www.huffingtonpost.com', 'http://cnn.com','http://www.cnbc.com','http://theatlantic.com', 
-           'http://www.bbc.co.uk','http://www.businessinsider.com','http://nytimes.com','http://yahoo.com',
-           'http://www.nbcnews.com','http://www.popsci.com','http://www.pbs.org','http://www.politico.com','http://www.reuters.com','http://www.latimes.com','http://www.forbes.com',
+    siteL=['http://www.huffingtonpost.com', 'https://edition.cnn.com/?hpt=header_edition-picker','http://www.cnbc.com','https://www.cnbc.com/world/','http://theatlantic.com', 
+           'http://www.bbc.co.uk','https://www.businessinsider.com/us','http://nytimes.com','https://uk.yahoo.com/?p=dnr',
+           'http://www.nbcnews.com','http://www.popsci.com','http://www.politico.com','http://www.reuters.com','http://www.latimes.com','https://www.forbes.com/home_usa/?sh=5b40ae9e324b',
            'http://washingtonpost.com']
     finalNews = []
     with ThreadPoolExecutor(max_workers=100) as executor:
