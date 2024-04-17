@@ -21,7 +21,6 @@ function AboutUs() {
                 <div class="left">
                     <h2 class="mission"> Our Mission:</h2>
                     <p class="para">
-                        
                         Many young people are out of touch with the news, making it difficult for them to create a well rounded 
                         and informed perspective on the world. By enabling users to specify their interests, this website tailors
                         a curated news stream to each indivudal's preferences. Through personalized news delivery, we aim to 
@@ -33,7 +32,6 @@ function AboutUs() {
                 <div class="right">
                     <img class="placeholder" alt="placeholder" src={placeholder}></img>
                 </div>
-            </div>
 
             <h2 class="left">The Team:</h2>
 
@@ -88,6 +86,7 @@ function AboutUs() {
                     <p class="name">Pomona '26</p>
                 </div>
             </div>
+        </div>
         </div>
     );
 }
