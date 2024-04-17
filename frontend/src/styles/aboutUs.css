@@ -1,17 +1,42 @@
 .container1 {
-    display: flex;
-    justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  grid-gap: 50px;
+  margin-bottom: 50px;
+  
+
+
 }
 
-.left {
-    width: 55%;
+.para {
+    display: flex;
+    flex-direction: column;
     text-align: left;
+    height: 100%;
+    font-size: 19px;
+}
+
+.mission {
+    margin-bottom: 30px;
+}
+
+.h2 {
+    font-size: 25px;
 }
 
 .right {
-    width: 45%;
-    text-align: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
+
+.placeholder {
+    max-width: 100%; 
+    max-height: 80%;
+    height: auto;
+}
+
 
 .member {
     margin:10px;

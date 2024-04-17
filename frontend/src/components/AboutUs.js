@@ -9,6 +9,7 @@ import emily from "../images/emily.png";
 import kayln from "../images/kayln.png";
 import tyler from "../images/tyler.png";
 import talia from "../images/talia.png";
+import placeholder from "../images/placeholder.jpg"
 
 
 function AboutUs() {
@@ -17,9 +18,9 @@ function AboutUs() {
             <h1 class="left">About Us</h1>
             
             <div class="container1">
-                <div>
-                    <h2 class="left">Our Mission:</h2>
-                    <p class="left">
+                <div class="left">
+                    <h2 class="mission"> Our Mission:</h2>
+                    <p class="para">
                         
                         Many young people are out of touch with the news, making it difficult for them to create a well rounded 
                         and informed perspective on the world. By enabling users to specify their interests, this website tailors
@@ -30,7 +31,7 @@ function AboutUs() {
                 </div>
 
                 <div class="right">
-                    <img src="placeholder.png" alt="placeholder"></img>
+                    <img class="placeholder" alt="placeholder" src={placeholder}></img>
                 </div>
             </div>
 
