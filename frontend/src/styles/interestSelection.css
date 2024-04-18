@@ -1,0 +1,28 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.topic-box {
+  background-color: #d9d9d9;
+  color: black;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  height: 100px;
+  cursor: pointer; /* Changes the cursor to a pointer on hover */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transitions for background color and scaling */
+}
+
+.topic-box:hover {
+  background-color: #989898; /* Darker shade on hover */
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.topic-box.selected {
+  background-color: #4caf50; /* Change background for selected boxes */
+}
