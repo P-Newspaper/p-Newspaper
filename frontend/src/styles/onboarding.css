@@ -1,0 +1,38 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto;
+    gap: 75%;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.photo {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    border: 1px solid gray;
+}
+
+img:hover {
+    filter: brightness(70%);
+    /* You can adjust the percentage to control the level of dimming */
+}
+
+/* Centered text */
+.centered {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 
+.topic {
+    margin:50px;
+    width: 25%;
+    margin:30px;
+    border: 1px solid gray;
+    display: inline-block;
+} */

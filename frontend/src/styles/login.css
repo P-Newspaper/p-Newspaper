@@ -1,8 +1,10 @@
-.container {
+.login-container {
     position: relative;
+    margin-top: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     font-family: 'Poppins', sans-serif;
 }
 

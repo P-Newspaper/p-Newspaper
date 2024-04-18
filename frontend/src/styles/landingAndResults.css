@@ -1,5 +1,5 @@
 .top-text {
-    margin-top: 5%;
+    margin-top: 150px;
     display: flex;
     justify-content: center;
     font-size: 30px;
@@ -19,12 +19,11 @@
 .form-container {
     display: flex;
     justify-content: center;
-    margin-top: 5%;
 }
 
 .input-container {
     width: 70vw; 
-    margin-bottom: 20px;
+    margin-top: 50px;
     position: relative;
 }
 
@@ -80,7 +79,7 @@
     background: white;
     padding: 20px;
     border-radius: 30px;
-    width: 10vh;
+    width: 100px;
     color: #2b3d55;
     transition: background 0.5s ease;
     display: flex;
@@ -112,4 +111,20 @@
     width: 90%; 
     height: 20vh; 
     font-family: 'Poppins', sans-serif;
+}
+
+.results-container{
+    margin-top: 100px;
+    margin-left: 40px;
+    margin-right: 60px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+.results-article-link-text {
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    margin: 0;
+    display: grid;
+    font-weight: bold;
 }

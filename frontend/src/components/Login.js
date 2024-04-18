@@ -26,7 +26,7 @@ function Login() {
   };
 
   return (
-    <div className="container">
+    <div className="login-container">
       <div className="title">Login</div>
       {/* {error && <div className="error">{error}</div>} */}
       <textarea
