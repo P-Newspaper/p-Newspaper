@@ -1,44 +1,42 @@
-.account-container {
-    position: relative;
-    margin-top: 130px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Poppins', sans-serif;
-
+.container {
+  position: relative;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
 }
 
-h2{
-    margin-bottom: 20px;
-    position: relative
+h2 {
+  margin-bottom: 20px;
+  position: relative;
 }
 
-button{
-    border-radius: 10px;
-    border-color: #e6e6e6;
-    height: 33px;
-    background-color: #e6e6e6;
-    width: 150px;
+button {
+  border-radius: 10px;
+  border-color: #e6e6e6;
+  height: 33px;
+  background-color: #e6e6e6;
+  width: 150px;
 }
 
-.createbutton:hover{
-    background-color: #9c9c9c;
-    border-radius: 10px;
-    color: white;
-    transition: background 0.5s ease;
+.createbutton:hover {
+  background-color: #9c9c9c;
+  border-radius: 10px;
+  color: white;
+  transition: background 0.5s ease;
 }
 
 textarea {
-    background-color: #e6e6e6;
-    border-color: #e6e6e6;
-    border-radius: 10px;
-    width: 20vw;
-    height: 23px;
-    padding: 10px;
-    margin-bottom: 30px;
-    resize: horizontal;
-    font-family: 'Poppins', sans-serif;
-    line-height: 23px;
-
+  background-color: #e6e6e6;
+  border-color: #e6e6e6;
+  border-radius: 10px;
+  width: 20vw;
+  height: 23px;
+  padding: 10px;
+  margin-bottom: 30px;
+  resize: horizontal;
+  font-family: "Poppins", sans-serif;
+  line-height: 23px;
 }
