@@ -1,62 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/login.css";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { googleLogout, useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
+import LoginButton from "./LoginButton";
+import UserProfile from "./UserProfile";
 
 function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  // const [error, setError] = useState(null);
-
+  const [user, setUser] = useState(null);
+  const [profile, setProfile] = useState(null);
   const navigate = useNavigate();
 
-  const handleLogin = async (event) => {
-    event.preventDefault();
+  const login = useGoogleLogin({
+    onSuccess: (codeResponse) => {
+      console.log('Login Successful:', codeResponse);
+      setUser(codeResponse);
+    },
+    onError: (error) => console.log("Login Failed:", error),
+  });
 
-    // setError(null);
-    // if (!username || !password) {
-    //     setError('Username and password are required');
-    //     return;
-    // }
+  useEffect(() => {
+    if (user) {
+      axios.get(`https://www.googleapis.com/oauth2/v1/userinfo`, {
+          headers: {
+            Authorization: `Bearer ${user.access_token}`,
+            Accept: "application/json",
+          },
+        })
+        .then((res) => {
+          setProfile(res.data);
+          if (!localStorage.getItem("hasLoggedIn")) {
+            navigate("/onboarding");
+            localStorage.setItem("hasLoggedIn", true);
+          }
+        })
+        .catch((err) => console.log("Error fetching user data:", err));
+    }
+  }, [user, navigate]);
 
-    console.log("Username:", username);
-    console.log("Password", password);
-    // send the username and password to the server
-    navigate("/userlanding");
+  const logOut = () => {
+    googleLogout();
+    setProfile(null);
+    setUser(null);
+    localStorage.removeItem("hasLoggedIn");
   };
 
   return (
     <div className="login-container">
-      <div className="title">Login</div>
-      {/* {error && <div className="error">{error}</div>} */}
-      <textarea
-        className="textinput"
-        id="username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        placeholder="Username"
-      />
-
-      <textarea
-        className="textinput"
-        id="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
-      />
-
-      <button type="button" className="login-button" onClick={handleLogin}>
-        Login
-      </button>
-
-      <div className="create-account">
-        Don't have an account?{" "}
-        <Link className="create-account-link" to="/createaccount">
-          Create account
-        </Link>
-      </div>
+      {profile ? (
+        <UserProfile profile={profile} onLogout={logOut} />
+      ) : (
+        <LoginButton onLogin={login} />
+      )}
     </div>
   );
 }
 
 export default Login;
+
