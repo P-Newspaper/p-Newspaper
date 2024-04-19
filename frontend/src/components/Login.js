@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../styles/login.css";
 import { useNavigate } from "react-router-dom";
 import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import LoginButton from "./LoginButton";
-import UserProfile from "./UserProfile";
+import MyAccount from "./MyAccount";
+import { UserContext } from "./UserProvider";
 
 function Login() {
-  const [user, setUser] = useState(null);
+  const { user, setUser } = useContext(UserContext);
   const [profile, setProfile] = useState(null);
   const navigate = useNavigate();
 
@@ -15,6 +16,7 @@ function Login() {
     onSuccess: (codeResponse) => {
       console.log('Login Successful:', codeResponse);
       setUser(codeResponse);
+      navigate("/userlanding")
     },
     onError: (error) => console.log("Login Failed:", error),
   });
@@ -30,7 +32,7 @@ function Login() {
         .then((res) => {
           setProfile(res.data);
           if (!localStorage.getItem("hasLoggedIn")) {
-            navigate("/onboarding");
+            navigate("/interestselection");
             localStorage.setItem("hasLoggedIn", true);
           }
         })
@@ -48,7 +50,7 @@ function Login() {
   return (
     <div className="login-container">
       {profile ? (
-        <UserProfile profile={profile} onLogout={logOut} />
+        <MyAccount profile={profile} onLogout={logOut} />
       ) : (
         <LoginButton onLogin={login} />
       )}

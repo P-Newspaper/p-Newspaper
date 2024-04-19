@@ -8,6 +8,7 @@ import Onboarding from "./components/Onboarding";
 import UserLanding from "./components/UserLanding";
 import InterestSelection from "./components/InterestSelection";
 import UserResults from "./components/UserResults";
+import MyAccount from "./components/MyAccount";
 
 function AppRoutes() {
   return (
@@ -20,6 +21,7 @@ function AppRoutes() {
       <Route path="/userlanding" element={<UserLanding />} />
       <Route path="/userresults" element={<UserResults />} />
       <Route path="/interestselection" element={<InterestSelection />} />
+      <Route path="/myaccount" element={<MyAccount />} />
     </Routes>
   );
 }
