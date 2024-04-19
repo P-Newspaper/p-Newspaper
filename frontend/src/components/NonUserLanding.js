@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 function NonUserLanding() {
   const [interests, setInterests] = useState("");
   const navigate = useNavigate();
-  const [news, setNews] = useState("");
+  const [setNews] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
