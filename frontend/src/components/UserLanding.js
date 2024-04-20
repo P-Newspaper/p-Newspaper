@@ -58,8 +58,8 @@ function UserLanding() {
             </form>
             <div><strong className="subhead-text">News Feed</strong></div>
             <div>{fakeFeed.data.articles.map((article, index) => (
-              <div className="article-container">
-                <div key={index} className="article-text">
+              <div key={index} className="article-container">
+                <div className="article-text">
                   <h2>{article.title}</h2>
                   <p>{article.content}</p>
                 </div>
