@@ -1,69 +1,72 @@
-import React from 'react';
-import '../styles/onboarding.css'
-import '../styles/global.css'
+import React, { useState, useEffect } from "react";
+import "../styles/login.css";
+import "../styles/onboarding.css";
+import { useNavigate } from "react-router-dom";
 
-function Onboarding() {
-    return (
-        <div class="everything">
-            <h2>What topics are you interested in?</h2>
+const interests = [
+  "Entertainment",
+  "Sports",
+  "Money & Business",
+  "Style & Beauty",
+  "Food",
+  "Travel",
+  "Health",
+  "Home & Garden",
+  "Science & Tech",
+  "Hobbies",
+  "Politics",
+  "Kids & Parenting",
+];
 
-            <div class="grid-container">
-                <div>
-                    <img class="photo" alt="topic.png" src="images/placeholder.png"></img>
-                    <div class="centered">Centered</div>
-                </div> 
-                <div>
-                    <img class="photo" alt="topic.png" src="images/placeholder.png"></img>
-                    <div class="centered">Centered</div>
-                </div>   
-                <div>
-                    <img class="photo" alt="topic.png" src="images/placeholder.png"></img>
-                    <div class="centered">Centered</div>
-                </div>   
-                <div>
-                    <img class="photo" alt="topic.png" src="images/placeholder.png"></img>
-                    <div class="centered">Centered</div>
-                </div>   
-                <div>
-                    <img class="photo" alt="topic.png" src="placeholder.png"></img>
-                    <div class="centered">Centered</div>
-                </div>   
-                <div>
-                    <img class="photo" alt="topic.png" src="placeholder.png"></img>
-                    <div class="centered">Centered</div>
-                </div>  
-                <div>
-                    <img class="photo" alt="topic.png" src="placeholder.png"></img>
-                    <div class="centered">Centered</div>
-                </div>    
-                <div>
-                    <img class="photo" alt="topic.png" src="placeholder.png"></img>
-                    <div class="centered">Centered</div>
-                </div>    
-                <div>
-                    <img class="photo" alt="topic.png" src="placeholder.png"></img>
-                    <div class="centered">Centered</div>
-                </div>    
-                <div>
-                    <img class="photo" alt="topic.png" src="placeholder.png"></img>
-                    <div class="centered">Centered</div>
-                </div>      
-                <div>
-                    <img class="photo" alt="topic.png" src="placeholder.png"></img>
-                    <div class="centered">Centered</div>
-                </div>    
-                <div>
-                    <img class="photo" alt="topic.png" src="placeholder.png"></img>
-                    <div class="centered">Centered</div>
-                </div> 
-            </div>
+const Onboarding = () => {
+  const navigate = useNavigate();
+  const [selectedInterests, setSelectedInterests] = useState([]);
 
-            {/* <button type="button" className="continue-button" onClick={handleOnboarding}>
-                Continue
-            </button> */}
-        </div>
-
+  const toggleSelection = (interest) => {
+    setSelectedInterests(
+      (prevState) =>
+        prevState.includes(interest)
+          ? prevState.filter((t) => t !== interest) // Remove topic if it's already selected
+          : [...prevState, interest] // Add topic if not already selected
     );
-}
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    navigate("/userlanding");
+  };
+
+  useEffect(() => {
+    console.log(selectedInterests);
+  }, [selectedInterests]);
+
+  return (
+    <div>
+      <div className="top-text">What topics are you interested in?</div>
+
+      <div className="container">
+        <div className="grid-container">
+          {interests.map((interest, index) => (
+            <div
+              key={index}
+              className={`topic-box ${
+                selectedInterests.includes(interest) ? "selected" : ""
+              }`}
+              onClick={() => toggleSelection(interest)}
+            >
+              {interest}
+            </div>
+          ))}
+        </div>
+        <div className="button-container">
+          <button type="button" className="go-button" onClick={handleSubmit}>
+            Go ➔
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Onboarding;

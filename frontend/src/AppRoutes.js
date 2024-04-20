@@ -6,7 +6,6 @@ import Login from "./components/Login";
 import NonUserResults from "./components/NonUserResults";
 import Onboarding from "./components/Onboarding";
 import UserLanding from "./components/UserLanding";
-import InterestSelection from "./components/InterestSelection";
 import UserResults from "./components/UserResults";
 
 function AppRoutes() {
@@ -19,7 +18,6 @@ function AppRoutes() {
       <Route path="/onboarding" element={<Onboarding />} />
       <Route path="/userlanding" element={<UserLanding />} />
       <Route path="/userresults" element={<UserResults />} />
-      <Route path="/interestselection" element={<InterestSelection />} />
     </Routes>
   );
 }
