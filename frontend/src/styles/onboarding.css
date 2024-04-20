@@ -1,38 +1,37 @@
 .grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-template-rows: auto auto auto;
-    gap: 75%;
-    width: 100%;
-    height: 100%;
-    text-align: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+  width: 70vw;
+  margin: 0 auto;
 }
 
-.photo {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-    border: 1px solid gray;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: fit-content;
+  margin: 0 auto;
 }
 
-img:hover {
-    filter: brightness(70%);
-    /* You can adjust the percentage to control the level of dimming */
+.topic-box {
+  background-color: #d9d9d9;
+  color: black;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-/* Centered text */
-.centered {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.topic-box:hover {
+  background-color: #989898;
+  transform: scale(1.05);
 }
 
-/* 
-.topic {
-    margin:50px;
-    width: 25%;
-    margin:30px;
-    border: 1px solid gray;
-    display: inline-block;
-} */
+.topic-box.selected {
+  background-color: #4caf50;
+}

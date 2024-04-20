@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/login.css";
-import "../styles/interestSelection.css";
+import "../styles/onboarding.css";
+import { useNavigate } from "react-router-dom";
 
 const interests = [
   "Entertainment",
@@ -17,7 +18,8 @@ const interests = [
   "Kids & Parenting",
 ];
 
-const InterestSelection = () => {
+const Onboarding = () => {
+  const navigate = useNavigate();
   const [selectedInterests, setSelectedInterests] = useState([]);
 
   const toggleSelection = (interest) => {
@@ -29,6 +31,12 @@ const InterestSelection = () => {
     );
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    navigate("/userlanding");
+  };
+
   useEffect(() => {
     console.log(selectedInterests);
   }, [selectedInterests]);
@@ -37,21 +45,28 @@ const InterestSelection = () => {
     <div>
       <div className="top-text">What topics are you interested in?</div>
 
-      <div className="grid-container">
-        {interests.map((interest, index) => (
-          <div
-            key={index}
-            className={`topic-box ${
-              selectedInterests.includes(interest) ? "selected" : ""
-            }`}
-            onClick={() => toggleSelection(interest)}
-          >
-            {interest}
-          </div>
-        ))}
+      <div className="container">
+        <div className="grid-container">
+          {interests.map((interest, index) => (
+            <div
+              key={index}
+              className={`topic-box ${
+                selectedInterests.includes(interest) ? "selected" : ""
+              }`}
+              onClick={() => toggleSelection(interest)}
+            >
+              {interest}
+            </div>
+          ))}
+        </div>
+        <div className="button-container">
+          <button type="button" className="go-button" onClick={handleSubmit}>
+            Go ➔
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-export default InterestSelection;
+export default Onboarding;
