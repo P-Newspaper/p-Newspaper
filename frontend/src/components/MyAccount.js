@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 import "../styles/myAccount.css";
 import { UserContext } from "./UserProvider";
 
-function MyAccount({ onLogout }) {
-  const { user } = useContext(UserContext);
+function MyAccount() {
+  const { user, logout } = useContext(UserContext);
 
   if (!user) {
     return <p>Loading...</p>
   }
+
   return (
     <div className="profile-container">
         <div className="title">
@@ -19,7 +20,7 @@ function MyAccount({ onLogout }) {
             <br/>
             Email Address: {user.email}
         </div>
-        <button className="logout-button" onClick={onLogout}>Log out</button>
+        <button className="logout-button" onClick={logout}>Log out</button>
     </div>
   );
 }
