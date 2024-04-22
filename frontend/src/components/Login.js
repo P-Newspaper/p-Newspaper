@@ -67,35 +67,34 @@ function Login() {
   const login = useGoogleLogin({
     onSuccess: async (codeResponse) => {
       const profileData = await fetchUserProfile(codeResponse.access_token);
-      setUser({ ...codeResponse, ...profileData }); 
-      navigate("/userlanding");
+      setUser({ ...codeResponse, ...profileData });
+      navigate("/onboarding");
       localStorage.setItem("hasLoggedIn", true);
-      },
+    },
     onError: (error) => console.log("Login Failed:", error),
   });
 
   async function fetchUserProfile(token) {
     try {
-      const response = await axios.get(`https://www.googleapis.com/oauth2/v1/userinfo`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: "application/json",
-        },
-      });
-      return response.data; 
+      const response = await axios.get(
+        `https://www.googleapis.com/oauth2/v1/userinfo`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: "application/json",
+          },
+        }
+      );
+      return response.data;
     } catch (err) {
       console.log("Error fetching user data:", err);
-      throw err;  
+      throw err;
     }
   }
 
   return (
     <div className="login-container">
-      {user ? (
-        <MyAccount/>
-      ) : (
-        <LoginButton onLogin={login} />
-      )}
+      {user ? <MyAccount /> : <LoginButton onLogin={login} />}
     </div>
   );
 }
