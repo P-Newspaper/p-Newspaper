@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+ import React, { useState, useEffect } from "react";
 import "../styles/login.css";
 import "../styles/onboarding.css";
 import { useNavigate } from "react-router-dom";
@@ -55,7 +55,8 @@ const Onboarding = () => {
               }`}
               onClick={() => toggleSelection(interest)}
             >
-              {interest}
+              <img src={'images/interests/${interest.toLowerCase().replace(/ /g, "%20")}.jpg'} alt={interest} />
+              <span>{interest}</span>
             </div>
           ))}
         </div>
