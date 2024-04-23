@@ -15,6 +15,10 @@
   margin: 0 auto;
 }
 
+.top-text {
+  margin-bottom: 20px;
+}
+
 .topic-box {
   color: white;
   border-radius: 15px;
