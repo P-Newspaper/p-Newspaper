@@ -16,22 +16,44 @@
 }
 
 .topic-box {
-  background-color: #d9d9d9;
-  color: black;
+  color: white;
   border-radius: 15px;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
+  position: relative;
+}
+
+.topic-box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  filter: brightness(0.5)
+}
+
+.topic-box:hover img{
+  filter: brightness(0.7);
 }
 
 .topic-box:hover {
-  background-color: #989898;
   transform: scale(1.05);
 }
 
+
 .topic-box.selected {
   background-color: #4caf50;
+}
+
+.topic-box span{
+  z-index: 1;
+  position: relative;
+  font-weight: bold;
 }

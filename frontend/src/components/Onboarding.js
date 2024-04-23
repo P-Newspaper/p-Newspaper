@@ -2,20 +2,37 @@
 import "../styles/login.css";
 import "../styles/onboarding.css";
 import { useNavigate } from "react-router-dom";
+// import food from "../images/interests/food.jpg"
+// for the images:
+import entertainment from "../images/interests/entertainment.jpg";
+import sports from "../images/interests/sports.jpg";
+import money from "../images/interests/money.jpg";
+import style from "../images/interests/style.jpg";
+import food from "../images/interests/food.jpg";
+import travel from "../images/interests/travel.jpg";
+import health from "../images/interests/health.jpg";
+import garden from "../images/interests/garden.jpg";
+import science from "../images/interests/science.jpg";
+import hobbies from "../images/interests/hobbies.jpg";
+import politics from "../images/interests/politics.jpg";
+import kids from "../images/interests/kids.jpg";
+
+
+
 
 const interests = [
-  "Entertainment",
-  "Sports",
-  "Money & Business",
-  "Style & Beauty",
-  "Food",
-  "Travel",
-  "Health",
-  "Home & Garden",
-  "Science & Tech",
-  "Hobbies",
-  "Politics",
-  "Kids & Parenting",
+  {name:"Entertainment", image: entertainment },
+  {name: "Sports", image: sports},
+  {name:"Money & Business", image: money},
+  {name: "Style & Beauty", image: style},
+  {name: "Food", image: food},
+  {name: "Travel", image: travel},
+  {name: "Health", image: health},
+  {name: "Home & Garden", image: garden},
+  {name: "Science & Tech", image: science},
+  {name: "Hobbies", image: hobbies},
+  {name: "Politics", image: politics},
+  {name: "Kids & Parenting", image: kids}
 ];
 
 const Onboarding = () => {
@@ -55,8 +72,9 @@ const Onboarding = () => {
               }`}
               onClick={() => toggleSelection(interest)}
             >
-              <img src={'images/interests/${interest.toLowerCase().replace(/ /g, "%20")}.jpg'} alt={interest} />
-              <span>{interest}</span>
+             {/* <img src={`../images/interests/${interest.toLowerCase().replace(/ /g, '%20')}.jpg`} alt={interests} /> */}
+             <img src={interest.image} alt={interest.name} />
+              <span>{interest.name}</span>
             </div>
           ))}
         </div>
