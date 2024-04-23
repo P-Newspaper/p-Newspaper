@@ -2,8 +2,8 @@
 import "../styles/login.css";
 import "../styles/onboarding.css";
 import { useNavigate } from "react-router-dom";
-// import food from "../images/interests/food.jpg"
-// for the images:
+
+// selected interest images:
 import entertainment from "../images/interests/entertainment.jpg";
 import sports from "../images/interests/sports.jpg";
 import money from "../images/interests/money.jpg";
@@ -72,7 +72,6 @@ const Onboarding = () => {
               }`}
               onClick={() => toggleSelection(interest)}
             >
-             {/* <img src={`../images/interests/${interest.toLowerCase().replace(/ /g, '%20')}.jpg`} alt={interests} /> */}
              <img src={interest.image} alt={interest.name} />
               <span>{interest.name}</span>
             </div>
