@@ -8,14 +8,11 @@ p-Newspaper is a web app that aims to connect young people with news that matter
 
 ## Tech Stack
 
-- Python
-- ChatGPT 4 API
-- JavaScript
-- Figma
+- ChatGPT 3.5 API
 - Newspaper3k.py
 - React
 - Flask
-- AWS EC2
+- AWS EC2, Lambda, Cloudwatch
 - PostgreSQL
 - Docker/Kubernetes
 
