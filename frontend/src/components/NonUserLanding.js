@@ -1,30 +1,31 @@
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import "../styles/landingAndResults.css";
 import { useNavigate } from "react-router-dom";
 
 function NonUserLanding() {
   const [interests, setInterests] = useState("");
   const navigate = useNavigate();
-  const [setNews] = useState("");
+  // const [setNews] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    navigate("/nonuserresults");
 
-    try {
-      const response = await axios.post("http://localhost:5000/fetch-news", {
-        interests,
-      });
+    // try {
+    //   const response = await axios.post("http://localhost:5000/fetch-news", {
+    //     interests,
+    //   });
 
-      let parsedData = JSON.parse(response.data);
-      setNews(parsedData);
-      console.log("response data: ", parsedData);
-      navigate("/submit", { state: parsedData });
-    } catch (error) {
-      console.error("Error fetching news:", error);
-    }
+    //   let parsedData = JSON.parse(response.data);
+    //   setNews(parsedData);
+    //   console.log("response data: ", parsedData);
+      // navigate("/nonuserresults", { state: parsedData });
+    // } catch (error) {
+    //   console.error("Error fetching news:", error);
+    // }
 
-    console.log("Form submitted");
+    // console.log("Form submitted");
 
     // let trimmedInterests = interests.trim();
     // if (trimmedInterests === '') {
@@ -45,7 +46,7 @@ function NonUserLanding() {
         <br></br>
         <strong className="top-text">Welcome to p-Newspaper!</strong>
       </div>
-      <form onSubmit={handleSubmit} className="form-container">
+      <form onSubmit={handleSubmit} className="non-user-form-container">
         <div className="input-container">
           <label htmlFor="interests">
             What do you want to read about today?
