@@ -6,4 +6,10 @@ CREATE TABLE news_articles (
     url TEXT
 );
 
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    google_id SERIAL,
+    news_interests TEXT[]
+);
 
+CREATE INDEX news_fts ON news_articles USING gin -- FIXME
