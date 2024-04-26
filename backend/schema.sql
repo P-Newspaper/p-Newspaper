@@ -1,3 +1,5 @@
+BEGIN;
+
 CREATE TABLE news_articles (
     id SERIAL PRIMARY KEY,
     date DATE,
@@ -12,4 +14,7 @@ CREATE TABLE users (
     news_interests TEXT[]
 );
 
-CREATE INDEX news_fts ON news_articles USING gin -- FIXME
+-- FIXME:   CREATE INDEX news_fts ON news_articles USING gin
+
+COMMIT;
+
