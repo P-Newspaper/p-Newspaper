@@ -5,8 +5,6 @@ import AboutUs from "./components/AboutUs";
 import Login from "./components/Login";
 import NonUserResults from "./components/NonUserResults";
 import Onboarding from "./components/Onboarding";
-import UserLanding from "./components/UserLanding";
-import UserResults from "./components/UserResults";
 import MyAccount from "./components/MyAccount";
 
 function AppRoutes() {
@@ -17,8 +15,8 @@ function AppRoutes() {
       <Route path="/login" element={<Login />} />
       <Route path="/nonuserresults" element={<NonUserResults />} />
       <Route path="/onboarding" element={<Onboarding />} />
-      <Route path="/userlanding" element={<UserLanding />} />
-      <Route path="/userresults" element={<UserResults />} />
+      <Route path="/userlanding" element={<NonUserLanding />} />
+      <Route path="/userresults" element={<NonUserResults />} />
       <Route path="/myaccount" element={<MyAccount />} />
     </Routes>
   );
