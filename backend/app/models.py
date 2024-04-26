@@ -1,20 +1,20 @@
-# from sqlalchemy.ext.declarative import declarative_base
-# from sqlalchemy import Column, Integer, String, Text, create_engine
-# from sqlalchemy.orm import sessionmaker
 
-# Base = declarative_base()
+from app import db
 
-# class Article(Base):
-#     __tablename__ = 'articles'
-#     id = Column(Integer, primary_key=True)
-#     title = Column(String(255), nullable=False)
-#     summary = Column(Text)
-#     url = Column(String(255), nullable=False)
+class User(db.Model):
+    __tablename__ = 'users'
+    user_id = db.Column(db.Integer, primary_key=True)
+    google_id = db.Column(db.Integer, unique=True)
+    news_interests = db.Column(db.ARRAY(db.String))
 
-# DATABASE_URI = ''
+    def __repr__(self):
+        return f'<User {self.user_id}>'
 
-# engine = create_engine(DATABASE_URI, echo=True)
-# Session = sessionmaker(bind=engine)
 
-# def get_session():
-#     return Session()
+class Article(db.Model):
+    __tablename__ = 'news_articles'
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255), nullable=False)
+    summary = db.Column(db.Text)
+    url = db.Column(db.String(255), nullable=False)
+

@@ -7,8 +7,12 @@ import os
 
 def create_app():
     app = Flask(__name__, static_folder='../frontend/build', static_url_path='/')
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:JjbFO5J0fifoF7ubN9nt@p-newspaper-db.ch60ws40s4xa.us-east-2.rds.amazonaws.com/postgres' 
     CORS(app)
+    db = SQLAlchemy(app)
 
+    with app.app_context():
+        db.create_all()
 
     from .routes import main as main_blueprint
     app.register_blueprint(main_blueprint)
