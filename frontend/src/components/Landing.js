@@ -10,7 +10,7 @@ function Landing() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    navigate("/nonuserresults");
+    navigate("/results");
 
     // try {
     //   const response = await axios.post("http://localhost:5000/fetch-news", {
