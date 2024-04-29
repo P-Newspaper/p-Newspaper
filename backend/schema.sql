@@ -8,9 +8,9 @@ CREATE TABLE news_articles (
     url TEXT
 );
 
-CREATE TABLE users (
+CREATE TABLE pnews.users (
     user_id SERIAL PRIMARY KEY,
-    google_id SERIAL,
+    google_id TEXT,
     news_interests TEXT[]
 );
 

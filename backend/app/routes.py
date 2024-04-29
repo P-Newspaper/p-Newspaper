@@ -17,10 +17,22 @@ def get_news():
         return jsonify({'error': str(e)}), 500
     
 
-@main.route('/user/add', methods=['POST'])  
-def add_user():
+@main.route('/user/add', methods=['POST'])
+def add_or_update_user():
     data = request.get_json()
-    new_user = User(google_id=data['google_id'], news_interests=data['interests'])
-    db.session.add(new_user)
-    db.session.commit()
-    return jsonify({'message': 'User added successfully'}), 201
+    google_id = data.get('google_id')
+    interests = data.get('interests', [])  
+
+    # Attempt to find an existing user with the given google_id
+    user = User.query.filter_by(google_id=google_id).first()
+    print(user)
+    
+    if user:
+        user.news_interests = interests
+        db.session.commit()
+        return jsonify({'message': 'User interests updated successfully'}), 200
+    else:
+        new_user = User(google_id=google_id, news_interests=interests)
+        db.session.add(new_user)
+        db.session.commit()
+        return jsonify({'message': 'New user added successfully'}), 201

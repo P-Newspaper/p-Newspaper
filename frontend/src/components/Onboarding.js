@@ -51,10 +51,10 @@ const Onboarding = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (user && user.google_id) {
+    if (user && user.id) {
       try {
         await axios.post("http://127.0.0.1:5000/user/add", {
-          google_id: user.google_id,
+          google_id: user.id,
           interests: selectedInterests,
         });
         console.log("Success posting user");
@@ -79,9 +79,9 @@ const Onboarding = () => {
             <div
               key={index}
               className={`topic-box ${
-                selectedInterests.includes(interest) ? "selected" : ""
+                selectedInterests.includes(interest.name) ? "selected" : ""
               }`}
-              onClick={() => toggleSelection(interest)}
+              onClick={() => toggleSelection(interest.name)}
             >
               <img src={interest.image} alt={interest.name} />
               <span>{interest.name}</span>

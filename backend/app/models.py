@@ -2,8 +2,9 @@ from app import db
 
 class User(db.Model):
     __tablename__ = 'users'
+    __table_args__ = {'schema': 'pnews'} 
     user_id = db.Column(db.Integer, primary_key=True)
-    google_id = db.Column(db.Integer, unique=True)
+    google_id = db.Column(db.String, unique=True)
     news_interests = db.Column(db.ARRAY(db.String))
 
     def __repr__(self):
