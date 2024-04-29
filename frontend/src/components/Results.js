@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import "../styles/landingAndResults.css";
 
-function NonUserResults({ news }) {
+function Results({ news }) {
   const location = useLocation();
   const data = location.state;
 
@@ -26,4 +26,4 @@ function NonUserResults({ news }) {
   );
 }
 
-export default NonUserResults;
+export default Results;

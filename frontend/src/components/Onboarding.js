@@ -51,7 +51,7 @@ const Onboarding = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    navigate("/userlanding");
+    navigate("/");
   };
 
   useEffect(() => {

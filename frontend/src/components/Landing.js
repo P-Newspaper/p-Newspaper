@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "../styles/landingAndResults.css";
 import { useNavigate } from "react-router-dom";
 
-function NonUserLanding() {
+function Landing() {
   const [interests, setInterests] = useState("");
   const navigate = useNavigate();
   // const [setNews] = useState("");
@@ -72,4 +72,4 @@ function NonUserLanding() {
   );
 }
 
-export default NonUserLanding;
+export default Landing;

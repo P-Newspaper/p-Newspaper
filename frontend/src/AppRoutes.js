@@ -1,22 +1,22 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import NonUserLanding from "./components/NonUserLanding";
+import Landing from "./components/Landing";
 import AboutUs from "./components/AboutUs";
 import Login from "./components/Login";
-import NonUserResults from "./components/NonUserResults";
+import Results from "./components/Results";
 import Onboarding from "./components/Onboarding";
 import MyAccount from "./components/MyAccount";
 
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<NonUserLanding />} />
+      <Route path="/" element={<Landing />} />
       <Route path="/about" element={<AboutUs />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/nonuserresults" element={<NonUserResults />} />
+      <Route path="/results" element={<Results />} />
       <Route path="/onboarding" element={<Onboarding />} />
-      <Route path="/userlanding" element={<NonUserLanding />} />
-      <Route path="/userresults" element={<NonUserResults />} />
+      <Route path="/landing" element={<Landing />} />
+      <Route path="/results" element={<Results />} />
       <Route path="/myaccount" element={<MyAccount />} />
     </Routes>
   );
