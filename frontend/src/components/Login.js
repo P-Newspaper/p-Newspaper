@@ -70,22 +70,9 @@ function Login() {
       setUser({ ...codeResponse, ...profileData });
       navigate("/onboarding");
       localStorage.setItem("hasLoggedIn", true);
-      postUserToBackend(profileData);
     },
     onError: (error) => console.log("Login Failed:", error),
   });
-
-  async function postUserToBackend(profileData) {
-    try {
-      const response = await axios.post("http://127.0.0.1:5000/user/add", {
-        google_id: profileData.id,
-        interests: [],
-      });
-      console.log("Backend responded:", response.data);
-    } catch (error) {
-      console.error("Failed to post user data to backend:", error);
-    }
-  }
 
   async function fetchUserProfile(token) {
     try {

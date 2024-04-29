@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../styles/login.css";
 import "../styles/onboarding.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { UserContext } from "./UserProvider";
 
 // selected interest images:
 import entertainment from "../images/interests/entertainment.jpg";
@@ -35,6 +37,7 @@ const interests = [
 const Onboarding = () => {
   const navigate = useNavigate();
   const [selectedInterests, setSelectedInterests] = useState([]);
+  const { user } = useContext(UserContext);
 
   const toggleSelection = (interest) => {
     setSelectedInterests(
@@ -48,14 +51,14 @@ const Onboarding = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const { user } = useContext(UserContext);
     if (user && user.google_id) {
       try {
         await axios.post("http://127.0.0.1:5000/user/add", {
           google_id: user.google_id,
           interests: selectedInterests,
         });
-        navigate("/userlanding");
+        console.log("Success posting user");
+        navigate("/landing");
       } catch (error) {
         console.error("Failed to update interests:", error);
       }
