@@ -1,6 +1,5 @@
 import json
-import sys
-import newspaper as newspaper3k
+import newspaper
 import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
