@@ -1,3 +1,4 @@
+import json
 import sys
 import newspaper as newspaper3k
 import datetime
@@ -49,10 +50,11 @@ def get_news_from_site(url):
         except:
             pass
     return articleL
-
-def handler(event, context):
-    response = opt_news_from_all()
-    return response
-
-if __name__ == "__main__":
-    handler(None, None)
+    
+def lambda_handler(event, context):
+    # TODO implement
+    results = opt_news_from_all()
+    return {
+        'statusCode': 200,
+        'body': json.dumps(results)
+    }
