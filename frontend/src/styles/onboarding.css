@@ -52,8 +52,18 @@
 }
 
 
-.topic-box.selected {
-  background-color: #4caf50;
+.topic-box::after {
+  content: ''; 
+  position: absolute;
+  width: 100%;
+  height: 100%; 
+  background-color: rgba(122, 166, 206, 0);  /* transparent */
+  transition: background-color 0.3s ease;
+  pointer-events: none; 
+}
+
+.topic-box.selected::after {
+  background-color: rgba(122, 166, 206, 0.5); /* changes to this color when selected */
 }
 
 .topic-box span{
