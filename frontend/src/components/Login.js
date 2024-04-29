@@ -85,6 +85,8 @@ function Login() {
           },
         }
       );
+      console.log(response.data);
+
       return response.data;
     } catch (err) {
       console.log("Error fetching user data:", err);
