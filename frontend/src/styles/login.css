@@ -6,6 +6,15 @@
     justify-content: center;
     align-items: center;
     font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f9;
+    border-radius: 20px;
+    /* margin-bottom: 100px; */
+    /* padding: ; */
+    width: 60vw;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
 }
 
 .title{
@@ -38,6 +47,7 @@
     font-size: 15px;
     border-color: #3D5779;
     border-width: 2px;
+    margin-bottom: 100px;
 }
 
 .login-button:hover {
