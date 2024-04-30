@@ -1,43 +1,32 @@
 import React, { useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 import "../styles/landingAndResults.css";
 import { useNavigate } from "react-router-dom";
 
 function Landing() {
   const [interests, setInterests] = useState("");
   const navigate = useNavigate();
-  // const [setNews] = useState("");
+  const [news, setNews] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    navigate("/results");
-
-    // try {
-    //   const response = await axios.post("http://localhost:5000/fetch-news", {
-    //     interests,
-    //   });
-
-    //   let parsedData = JSON.parse(response.data);
-    //   setNews(parsedData);
-    //   console.log("response data: ", parsedData);
-      // navigate("/nonuserresults", { state: parsedData });
-    // } catch (error) {
-    //   console.error("Error fetching news:", error);
-    // }
-
-    // console.log("Form submitted");
-
-    // let trimmedInterests = interests.trim();
-    // if (trimmedInterests === '') {
-    //     trimmedInterests = 'AI, machine learning, data science';
-    // }
-    // try {
-    //     const response = await axios.post('http://localhost:5000/fetch-news', { interests });
-    //     console.log(response.data);
-    //     navigate('/submit');
-    // } catch (error) {
-    //     console.error('Error fetching news:', error);
-    // }
+    let trimmedInterests = interests.trim();
+    if (trimmedInterests === "") {
+      trimmedInterests = "AI, machine learning, data science";
+      return;
+    }
+    try {
+        console.log("sending interest: ", interests)
+        const response = await axios.post('http://localhost:5000/fetch-news', { 
+          interests: interests.split(',').map(interest => interest.trim()),
+        });
+        setNews(response.data.articles);
+        console.log(response.data);
+        navigate('/results', { state: { articles: response.data.articles } });
+    } catch (error) {
+        console.error('Error fetching news:', error);
+        alert('Failed to fetch news. Please try again later.')
+    }
   };
 
   return (

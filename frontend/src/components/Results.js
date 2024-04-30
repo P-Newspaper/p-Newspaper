@@ -2,28 +2,27 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import "../styles/landingAndResults.css";
 
-function Results({ news }) {
+function Results() {
   const location = useLocation();
-  const data = location.state;
+  const { articles } = location.state || { articles: [] };
+
+  if (!articles.length) {
+    return <div> No news articles to display </div>;
+  }
 
   return (
     <div>
-      {data.articles.map((article, index) => (
-        <div key={index}>
-          <h2>{article.title}</h2>
-          <p>{article.content}</p>
+      <h2>News Stories</h2>
+      {articles.map((article, index) => (
+        <div key={index} className="article">
+          <h3>{article.title}</h3>
+          <p>{article.summary}</p>
+          <a href={article.url} target="_blank" rel="noopener noreferrer">Read More</a>
         </div>
       ))}
-      {/* <h2>News Stories</h2>
-            <ul>
-                {news.map((story, index) => (
-                    <li key={index}>
-                        <a href={story.url} target="_blank" rel="noopener noreferrer">{story.title}</a>
-                    </li>
-                ))}
-            </ul> */}
     </div>
-  );
+  );  
 }
 
 export default Results;
+
