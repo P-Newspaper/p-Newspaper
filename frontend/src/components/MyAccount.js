@@ -18,6 +18,7 @@ function MyAccount() {
   }
 
   return (
+    <div className="container">
     <div className="profile-container">
         <div className="title">
             User Details
@@ -29,6 +30,7 @@ function MyAccount() {
             Email Address: {user.email}
         </div>
         <button className="logout-button" onClick={handleLogOut}>Log out</button>
+    </div>
     </div>
   );
 }

@@ -1,7 +1,8 @@
-import json
+import sys
 import newspaper
 import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import sqlalchemy
 
 def opt_news_from_all():
     """Returns a list of news articles from a set of news sources;
@@ -41,7 +42,7 @@ def get_news_from_site(url):
             if cleanDate >= last_month:
                 articleD['date']=cleanDate
                 articleD['title'] = article.title
-                articleD['summary']= article.summary
+                articleD['summary']= article.summary.replace("\n", "")
                 articleD['url']=article.url
                 articleL.append(articleD)
             else:
@@ -49,11 +50,59 @@ def get_news_from_site(url):
         except:
             pass
     return articleL
+
+def handler(event, context):
+    # Check if the correct number of command-line arguments is provided
+    if len(sys.argv) != 2:
+        print("Usage: python script.py <password>")
+        sys.exit(1)
+
+    response = opt_news_from_all()
+
+    # Extract the password from the command-line arguments
+    password = sys.argv[1]
+
+    # Now you can use the password in your script for database connection or other purposes
+    print("Database password:", password)
+
+    db_endpoint = 'p-newspaperdb.ch60ws40s4xa.us-east-2.rds.amazonaws.com'
+    db_username = 'postgres'
+    db_name = 'postgres'
+   
+    # Define the connection string for PostgreSQL
+    db_url = f'postgresql://{db_username}:{password}@{db_endpoint}/{db_name}'
+   
+    # Create the SQL Alchemy engine
+    engine = sqlalchemy.create_engine(db_url)
     
-def lambda_handler(event, context):
-    # TODO implement
-    results = opt_news_from_all()
-    return {
-        'statusCode': 200,
-        'body': json.dumps(results)
-    }
+    # Iterate over the list of JSON objects and insert them into the database
+    for article_data in response:
+        # Construct an insert statement
+        insert_stmt = sqlalchemy.text(
+            '''
+            INSERT INTO pnews.articles (date, title, summary, url)
+            VALUES (:date, :title, :summary, :url)
+            '''
+        )
+        
+        # Execute the insert statement with the data from the JSON object
+        with engine.connect() as connection:
+            connection.execute(
+                insert_stmt,
+             #   date=article_data['date'],
+             #   title=article_data['title'],
+             #   summary=article_data['summary'],
+             #   url=article_data['url']
+                {
+                    'date': article_data['date'],
+                    'title': article_data['title'],
+                    'summary': article_data['summary'],
+                    'url': article_data['url']
+                }    
+            )
+            connection.commit()
+
+    print("Data inserted successfully.")
+
+if __name__ == "__main__":
+    handler(None, None)
