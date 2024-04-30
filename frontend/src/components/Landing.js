@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../styles/landingAndResults.css";
 import { useNavigate } from "react-router-dom";
+const { user } = useContext(UserContext);
 
 function Landing() {
   const [interests, setInterests] = useState("");
@@ -16,16 +17,17 @@ function Landing() {
       return;
     }
     try {
-        console.log("sending interest: ", interests)
-        const response = await axios.post('http://localhost:5000/fetch-news', { 
-          interests: interests.split(',').map(interest => interest.trim()),
-        });
-        setNews(response.data.articles);
-        console.log(response.data);
-        navigate('/results', { state: { articles: response.data.articles } });
+      console.log("sending interest: ", interests);
+      const response = await axios.post("http://localhost:5000/fetch-news", {
+        google_id: user.google_id,
+        interests: interests.split(",").map((interest) => interest.trim()),
+      });
+      setNews(response.data.articles);
+      console.log(response.data);
+      navigate("/results", { state: { articles: response.data.articles } });
     } catch (error) {
-        console.error('Error fetching news:', error);
-        alert('Failed to fetch news. Please try again later.')
+      console.error("Error fetching news:", error);
+      alert("Failed to fetch news. Please try again later.");
     }
   };
 

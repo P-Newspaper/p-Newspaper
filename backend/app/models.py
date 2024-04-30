@@ -17,4 +17,6 @@ class Article(db.Model):
     title = db.Column(db.String(255), nullable=False)
     summary = db.Column(db.Text)
     url = db.Column(db.String(255), nullable=False)
+    search_vector = db.Column(db.TsVector())
+
 
