@@ -34,7 +34,7 @@ function Landing() {
       }
       console.log("sending postData: ", postData);
       const response = await axios.post(
-        "http://localhost:5000/fetch-news",
+        "http://localhost:5001/fetch-news",
         postData
       );
       setNews(response.data);
@@ -66,7 +66,7 @@ function Landing() {
             />
           </div>
           <div className="button-container">
-            <button type="button" className="go-button" onClick={handleSubmit}>
+            <button type="submit" className="go-button" onClick={handleSubmit}>
               Go ➔
             </button>
           </div>

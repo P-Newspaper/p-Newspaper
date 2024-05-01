@@ -53,7 +53,7 @@ const Onboarding = () => {
 
     if (user && user.id) {
       try {
-        await axios.post("http://127.0.0.1:5000/user/add", {
+        await axios.post("http://127.0.0.1:5001/user/add", {
           google_id: user.id,
           interests: selectedInterests,
         });
