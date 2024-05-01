@@ -20,8 +20,7 @@ def create_prompt(news_articles, user_selected_interests, user_typed_interests):
     prompt += "\nHere are the user's previously selected interests: "
     prompt += "\n" + ", ".join(user_selected_interests)
     prompt += "\nHere is a description of what the user wants to read about today: "
-    for interest in user_typed_interests:
-        prompt += interest + ", "
+    prompt += ", ".join(user_typed_interests)
     print(prompt)
     prompt += '\nOutput the headlines, summaries, published dates, and URLs that are most relevant to these interests, in order of relevance. Display the results in the following format, with the correct information added where it says to insert: [{"title":"insert title","date":"insert date","summary":"insert summary","url":"insert url here"}, {insert other articles in the same format}]. Do not output anything else.'
     return prompt
