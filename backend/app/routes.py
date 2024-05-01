@@ -3,8 +3,6 @@ from .api_integration import filter_news
 from .models import User
 from app import db
 
-
-
 main = Blueprint('main', __name__)
 
 @main.route('/fetch-news', methods=['POST'])

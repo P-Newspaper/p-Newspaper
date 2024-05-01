@@ -24,19 +24,15 @@ def create_prompt(news_articles, user_selected_interests, user_typed_interests):
     return prompt
  
 
-def filter_news(user_selected_interests, user_typed_interests):
+def filter_news(news_articles, user_selected_interests, user_typed_interests):
     """Creates a prompt with news articles and user's interests, and returns ChatGPT's response
     filtering for the most relevant articles."""
     client = get_openai_client()
 
-    news_list = opt_news_from_all()
-    news_list_filtered = news_list[:100]
-    # news_list_filtered = [{"title": "Global Leaders Meet to Address Climate Change Urgency", "summary": "In a landmark summit held in Paris, leaders from over 50 nations convened to discuss actionable strategies against the escalating threat of climate change.", "url": "www.news.com", "date": "2/3/2023"}, {"title": "Record-Breaking Marathon Victory Shatters Decades-Old Record", "summary": "Ethiopian runner, Alemu Bekele, made history at the Berlin Marathon by breaking a two-decade-old world record, finishing in an astonishing time of 2:01:39.", "url": "www.news2.com", "date":"3/234/333"}]
-
-    prompt = create_prompt(news_list_filtered, user_selected_interests, user_typed_interests)
+    prompt = create_prompt(news_articles, user_selected_interests, user_typed_interests)
 
     stream = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": prompt}],
         stream=True,
     )
