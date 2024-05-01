@@ -10,12 +10,3 @@ services:
     build: ./backend
     ports:
       - "5001:5001"
-  nginx:
-    build: ./services/nginx
-    volumes:
-      - static_volume:/home/app/web/project/static
-      - media_volume:/home/app/web/project/media
-    ports:
-      - 1341:80
-    depends_on:
-      - web
