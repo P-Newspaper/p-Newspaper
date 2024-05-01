@@ -1,9 +1,8 @@
 from flask import Blueprint, request, jsonify, current_app
 from .api_integration import filter_news
-from .models import User
+from .models import User, Article
 from app import db
-
-
+from sqlalchemy import func
 
 main = Blueprint('main', __name__)
 
@@ -22,6 +21,11 @@ def get_news():
             user_selected_interests = user.news_interests
 
     try:
+        if user_selected_interests: 
+            query = db.session.query(Article).filter(
+                func.to_tsvector(Article.title).match(func.plainto_tsquery(' & '.join(user_selected_interests)))
+            )
+            news_stories = query.all()
         news_stories = filter_news(user_selected_interests, user_typed_interests)
         return jsonify(news_stories), 200
     except Exception as e:
