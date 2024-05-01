@@ -26,7 +26,7 @@ def get_news():
                 func.to_tsvector(Article.title).match(func.plainto_tsquery(' & '.join(user_selected_interests)))
             )
             news_stories = query.all()
-        news_stories = filter_news(user_selected_interests, user_typed_interests)
+        news_stories = filter_news(news_stories, user_selected_interests, user_typed_interests)
         return jsonify(news_stories), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
