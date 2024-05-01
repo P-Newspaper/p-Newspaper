@@ -1,30 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import "../styles/landingAndResults.css";
 import { useNavigate } from "react-router-dom";
-const { user } = useContext(UserContext);
+import { UserContext } from "./UserProvider";
 
 function Landing() {
   const [interests, setInterests] = useState("");
   const navigate = useNavigate();
   const [news, setNews] = useState("");
+  const { user } = useContext(UserContext);
+
+  let google_id = null;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     let trimmedInterests = interests.trim();
     if (trimmedInterests === "") {
-      trimmedInterests = "AI, machine learning, data science";
+      alert("Please enter your interests.");
       return;
+    }
+    console.log("user" + user);
+    if (user) {
+      google_id = user.id;
+      console.log(google_id);
     }
     try {
       console.log("sending interest: ", interests);
-      const response = await axios.post("http://localhost:5000/fetch-news", {
-        google_id: user.google_id,
+      const postData = {
         interests: interests.split(",").map((interest) => interest.trim()),
-      });
-      setNews(response.data.articles);
-      console.log(response.data);
-      navigate("/results", { state: { articles: response.data.articles } });
+      };
+      if (google_id) {
+        postData.google_id = google_id;
+      }
+      console.log("sending postData: ", postData);
+      const response = await axios.post(
+        "http://localhost:5000/fetch-news",
+        postData
+      );
+      setNews(response.data);
+      navigate("/results", { state: { articles: JSON.parse(response.data) } });
     } catch (error) {
       console.error("Error fetching news:", error);
       alert("Failed to fetch news. Please try again later.");

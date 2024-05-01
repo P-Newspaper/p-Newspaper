@@ -4,7 +4,8 @@ import "../styles/landingAndResults.css";
 
 function Results() {
   const location = useLocation();
-  const { articles } = location.state || { articles: [] };
+
+  const { articles = [] } = location.state || {};
 
   if (!articles.length) {
     return <div> No news articles to display </div>;
@@ -17,12 +18,13 @@ function Results() {
         <div key={index} className="article">
           <h3>{article.title}</h3>
           <p>{article.summary}</p>
-          <a href={article.url} target="_blank" rel="noopener noreferrer">Read More</a>
+          <a href={article.url} target="_blank" rel="noopener noreferrer">
+            Read More
+          </a>
         </div>
       ))}
     </div>
-  );  
+  );
 }
 
 export default Results;
-
