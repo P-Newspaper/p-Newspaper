@@ -13,6 +13,19 @@ from flask_cors import cross_origin, CORS
 from openai import OpenAI
 from dotenv import load_dotenv
 
+from sqlalchemy import event, text
+from sqlalchemy.engine import Engine 
+import logging
+import time
+
+logging.basicConfig()
+logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
+
+@event.listens_for(Engine, "before_cursor_execute")
+def before_cursor_execute(conn, cursor, statement, parameters, context, executemany):
+    conn.info.setdefault('query_start_time', []).append(time.time())
+    logging.info("Start Query: %s", statement)
+
 load_dotenv()
 
 class Config:
@@ -80,7 +93,8 @@ class User(db.Model):
 
 
 class Article(db.Model):
-    __tablename__ = 'news_articles'
+    __tablename__ = 'articles'
+    __table_args__ = {'schema': 'pnews'}
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
     date = db.Column(db.Date, nullable=False)
@@ -100,7 +114,7 @@ def hello():
 def get_news():
     data = request.get_json()
     user_typed_interests = data.get('interests', [])
-    google_id = data.get('google_id', None) 
+    google_id = data.get('google_id', None)
 
     user_selected_interests = []
 
@@ -109,25 +123,29 @@ def get_news():
         if user:
             user_selected_interests = user.news_interests
 
-    print("google id: ", google_id)
-    print("selected interests: ", user_selected_interests)
-    print("typed interests: ", user_typed_interests)
+    print("Google ID:", google_id)
+    print("Selected interests:", user_selected_interests)
+    print("Typed interests:", user_typed_interests)
     try:
-        if user_selected_interests: 
-            query = db.session.query(Article).filter(
-                func.to_tsvector(Article.title).match(func.plainto_tsquery(' & '.join(user_selected_interests)))
-            )
-            news_stories = query.all()
-        # news_stories = [{'title': 'Global Leaders Meet to Address Climate Change Urgency', 'summary': 'In a landmark summit held in Paris, leaders from over 50 nations convened to discuss actionable strategies against the escalating threat of climate change.', 'url': 'www.news.com', 'date': '2/3/2023'}, {'title': 'Record-Breaking Marathon Victory Shatters Decades-Old Record', 'summary': 'Ethiopian runner, Alemu Bekele, made history at the Berlin Marathon by breaking a two-decade-old world record, finishing in an astonishing time of 2:01:39.', 'url': 'www.news2.com', 'date': '3/234/333'}]
+        if user_selected_interests:
+            # Combine user interests into a single string for the query
+            interests_query = ' | '.join(user_selected_interests)
+            sql_query = text('''SELECT * FROM pnews.articles
+                             WHERE to_tsvector(title) @@ plainto_tsquery(:interests_query)''')
+            news_stories = db.session.execute(sql_query, {'interests_query': interests_query}).fetchall()
+            
             if news_stories:
-                news_stories = filter_news(news_stories, user_selected_interests, user_typed_interests)
+                # news_stories = filter_news(news_stories, user_selected_interests, user_typed_interests)
                 return jsonify(news_stories), 200
             else:
                 return jsonify({'error': 'No news stories found'}), 404
         else:
             return jsonify({'error': 'No user interests found'}), 404
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        # Log the exception with more detail
+        app.logger.error('Failed to fetch news: %s', str(e))
+        return jsonify({'error': 'Internal Server Error'}), 500
+
     
 
 @app.route('/user/add', methods=['POST'])
