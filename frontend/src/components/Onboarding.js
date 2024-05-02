@@ -34,6 +34,7 @@ const interests = [
   { name: "Kids & Parenting", image: kids },
 ];
 
+
 const Onboarding = () => {
   const navigate = useNavigate();
   const [selectedInterests, setSelectedInterests] = useState([]);
@@ -52,10 +53,14 @@ const Onboarding = () => {
     event.preventDefault();
 
     if (user && user.id) {
+      const processedInterests = selectedInterests.map(interest => 
+        interest.split(' ').map(word => word.replace(/[^a-zA-Z0-9]/g, '')).filter(word => word)
+      ).flat();
+
       try {
         await axios.post("http://127.0.0.1:5001/user/add", {
           google_id: user.id,
-          interests: selectedInterests,
+          interests: processedInterests,
         });
         console.log("Success posting user");
         navigate("/landing");
