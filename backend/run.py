@@ -27,15 +27,13 @@ def before_cursor_execute(conn, cursor, statement, parameters, context, executem
     logging.info("Start Query: %s", statement)
 
 load_dotenv()
-
-class Config:
-    openai_api_key = os.environ.get('OPENAI_API_KEY')
+api_key = os.getenv('OPENAI_API_KEY')
 
 
 def get_openai_client():
     """Retrieve an OpenAI client configured with the API key from app config."""
-    openai_api_key = Config.openai_api_key
-    client = OpenAI(api_key=openai_api_key)
+    api_key = os.getenv('OPENAI_API_KEY')
+    client = OpenAI(api_key=api_key)
     return client
                                                             
 
@@ -45,7 +43,8 @@ def create_prompt(news_articles, user_selected_interests, user_typed_interests):
     prompt = "Here is a list of news headlines and summaries:" 
     for article in news_articles:
         print(article)
-        prompt += "\n" + article['title'] + ": " + article['summary'] + "\n" + article['url'] + "\n" + "Published: " + article['date'] + "\n"
+        date_str = article['date'].strftime("%Y-%m-%d")
+        prompt += f"\n{article['title']}: {article['summary']}\n{article['url']}\nPublished: {date_str}\n"
     prompt += "\nHere are the user's previously selected interests: "
     prompt += "\n" + ", ".join(user_selected_interests)
     prompt += "\nHere is a description of what the user wants to read about today: "
@@ -136,8 +135,8 @@ def get_news():
             news_list = [row._asdict() for row in news_stories]
             
             if news_list:
-                # news_stories = filter_news(news_stories, user_selected_interests, user_typed_interests)
-                return jsonify(news_list), 200
+                news_stories = filter_news(news_list, user_selected_interests, user_typed_interests)
+                return jsonify(news_stories), 200
             else:
                 return jsonify({'error': 'No news stories found'}), 404
         else:
