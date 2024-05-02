@@ -132,11 +132,6 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.article-title {
-    font-size: 18px;
-    color: #0077cc;
-}
-
 .article-summary {
     font-size: 16px;
     color: #666;
@@ -149,5 +144,15 @@
     color: #666;
     margin-top: 50px;
 }
+
+.article-link {
+    text-decoration: none;
+    font-size: 24px;
+    color: #3D5779;
+}
   
+.article-link:hover {
+    text-decoration: underline;
+    color: #2b3d55;
+}
 
