@@ -19,7 +19,7 @@ function Landing() {
       alert("Please enter your interests.");
       return;
     }
-    console.log("user" + user);
+    console.log("user", user);
     if (user) {
       google_id = user.id;
       console.log(google_id);
@@ -38,7 +38,7 @@ function Landing() {
         postData
       );
       setNews(response.data);
-      navigate("/results", { state: { articles: JSON.parse(response.data) } });
+      navigate("/results", { state: { articles: response.data } }); // No need for JSON.parse()
     } catch (error) {
       console.error("Error fetching news:", error);
       alert("Failed to fetch news. Please try again later.");
@@ -66,7 +66,7 @@ function Landing() {
             />
           </div>
           <div className="button-container">
-            <button type="submit" className="go-button" onClick={handleSubmit}>
+            <button type="submit" className="go-button">
               Go ➔
             </button>
           </div>
