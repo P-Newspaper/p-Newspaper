@@ -7,6 +7,7 @@ import { UserContext } from "./UserProvider";
 function Landing() {
   const [interests, setInterests] = useState("");
   const navigate = useNavigate();
+  // eslint-disable-next-line
   const [news, setNews] = useState("");
   const { user } = useContext(UserContext);
 
