@@ -128,21 +128,24 @@ def get_news():
     print("Typed interests:", user_typed_interests)
     try:
         if user_selected_interests:
-            # Combine user interests into a single string for the query
             interests_query = ' | '.join(user_selected_interests)
             sql_query = text('''SELECT * FROM pnews.articles
-                             WHERE to_tsvector(title) @@ plainto_tsquery(:interests_query)''')
+                             WHERE to_tsvector(title) @@ to_tsquery(:interests_query)''')
             news_stories = db.session.execute(sql_query, {'interests_query': interests_query}).fetchall()
             
-            if news_stories:
+            news_list = []
+            for row in news_stories:
+                news_dict = {column: value for column, value in row.items()}
+                news_list.append(news_dict)
+            
+            if news_list:
                 # news_stories = filter_news(news_stories, user_selected_interests, user_typed_interests)
-                return jsonify(news_stories), 200
+                return jsonify(news_list), 200
             else:
                 return jsonify({'error': 'No news stories found'}), 404
         else:
             return jsonify({'error': 'No user interests found'}), 404
     except Exception as e:
-        # Log the exception with more detail
         app.logger.error('Failed to fetch news: %s', str(e))
         return jsonify({'error': 'Internal Server Error'}), 500
 
