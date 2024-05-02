@@ -4,11 +4,15 @@ import "../styles/landingAndResults.css";
 
 function Results() {
   const location = useLocation();
-  console.log(location.state)
-  // const { articlesString = '[]' } = location.state || {};
-  const articlesString = location.state ? location.state.articlesString : '[]';
 
-  console.log('received articlesstring:', articlesString)
+  // const { articlesString = '[]' } = location.state || {};
+  let articlesString = location.state ? location.state.articlesString : '[]';
+  articlesString = articlesString.replace(/^"|"$/g, ''); 
+  articlesString = articlesString.replace(/\\n/g, ''); 
+  articlesString = articlesString.replace(/\\"/g, '"'); 
+  
+  console.log('articlesString:', articlesString)
+
   let articles;
   try {
     articles = JSON.parse(articlesString);
