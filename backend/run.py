@@ -133,10 +133,11 @@ def get_news():
                              WHERE to_tsvector(title) @@ to_tsquery(:interests_query)''')
             news_stories = db.session.execute(sql_query, {'interests_query': interests_query}).fetchall()
             
-            news_list = []
-            for row in news_stories:
-                news_dict = {column: value for column, value in row.items()}
-                news_list.append(news_dict)
+            # news_list = []
+            # for row in news_stories:
+            #     news_dict = {column: value for column, value in row.items()}
+            #     news_list.append(news_dict)
+            news_list = [row._asdict() for row in news_stories]
             
             if news_list:
                 # news_stories = filter_news(news_stories, user_selected_interests, user_typed_interests)
