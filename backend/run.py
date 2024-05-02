@@ -34,24 +34,46 @@ def get_openai_client():
     """Retrieve an OpenAI client configured with the API key from app config."""
     api_key = os.getenv('OPENAI_API_KEY')
     client = OpenAI(api_key=api_key)
-    return client
-                                                            
+    return client                                                    
+
+# def create_prompt(news_articles, user_selected_interests, user_typed_interests):
+#     """Creates ChatGPT prompt used to filter articles: input are all of the articles and 
+#       user's typed and selected interests, output is a list of most relevant articles."""
+#     prompt = "Here is a list of news headlines and summaries:" 
+#     for article in news_articles:
+#         print(article)
+#         date_str = article['date'].strftime("%Y-%m-%d")
+#         prompt += f"\n{article['title']}: {article['summary']}\n{article['url']}\nPublished: {date_str}\n"
+#     prompt += "\nHere are the user's previously selected interests: "
+#     prompt += "\n" + ", ".join(user_selected_interests)
+#     prompt += "\nHere is a description of what the user wants to read about today: "
+#     prompt += ", ".join(user_typed_interests)
+#     print(prompt)
+#     prompt += '\nOutput the headlines, summaries, published dates, and URLs that are most relevant to these interests, in order of relevance. Display the results in the following format, with the correct information added where it says to insert: [{"title":"insert title","date":"insert date","summary":"insert summary","url":"insert url here"}, {insert other articles in the same format}]. Do not output anything else.'
+#     return prompt
 
 def create_prompt(news_articles, user_selected_interests, user_typed_interests):
     """Creates ChatGPT prompt used to filter articles: input are all of the articles and 
-      user's typed and selected interests, output is a list of most relevant articles."""
-    prompt = "Here is a list of news headlines and summaries:" 
+      user's typed and selected interests, output is a list of most relevant articles in JSON format."""
+    prompt = "Given the following list of news articles, filter the articles based on the listed interests and output the most relevant articles in a structured JSON format. Each JSON object should contain the title, date, summary, and URL of the article.\n\n"
+
+    # Articles description
+    prompt += "Articles:\n"
     for article in news_articles:
-        print(article)
         date_str = article['date'].strftime("%Y-%m-%d")
-        prompt += f"\n{article['title']}: {article['summary']}\n{article['url']}\nPublished: {date_str}\n"
-    prompt += "\nHere are the user's previously selected interests: "
-    prompt += "\n" + ", ".join(user_selected_interests)
-    prompt += "\nHere is a description of what the user wants to read about today: "
-    prompt += ", ".join(user_typed_interests)
-    print(prompt)
-    prompt += '\nOutput the headlines, summaries, published dates, and URLs that are most relevant to these interests, in order of relevance. Display the results in the following format, with the correct information added where it says to insert: [{"title":"insert title","date":"insert date","summary":"insert summary","url":"insert url here"}, {insert other articles in the same format}]. Do not output anything else.'
+        prompt += f"Title: {article['title']}\nSummary: {article['summary']}\nURL: {article['url']}\nDate: {date_str}\n\n"
+
+    # Interests
+    prompt += "User's selected interests:\n" + ", ".join(user_selected_interests) + "\n"
+    prompt += "User's typed interests:\n" + ", ".join(user_typed_interests) + "\n"
+    
+    # Formatting instruction
+    prompt += "\nPlease format the output as follows:\n"
+    prompt += '[{"title": "Title of the article", "date": "Publication date", "summary": "Brief summary", "url": "Article URL"},\n'
+    prompt += '{"title": "Next article title", "date": "Next publication date", "summary": "Next brief summary", "url": "Next article URL"}]\n'
+    
     return prompt
+
  
 
 def filter_news(news_articles, user_selected_interests, user_typed_interests):

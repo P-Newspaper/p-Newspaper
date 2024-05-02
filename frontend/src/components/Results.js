@@ -4,7 +4,24 @@ import "../styles/landingAndResults.css";
 
 function Results() {
   const location = useLocation();
-  const { articles = [] } = location.state || {};
+  console.log(location.state)
+  // const { articlesString = '[]' } = location.state || {};
+  const articlesString = location.state ? location.state.articlesString : '[]';
+
+  console.log('received articlesstring:', articlesString)
+  let articles;
+  try {
+    articles = JSON.parse(articlesString);
+  } catch (e) {
+    console.error('Error parsing articles:', e);
+    articles = [];
+  }
+  console.log('parsed articles:', articles)
+
+  if (!Array.isArray(articles)) {
+    console.error('Expected articles to be an array but received:', articles);
+    return <div>Incorrect data format received</div>;
+  }
 
   if (!articles.length) {
     return <div className="no-articles">No news articles to display</div>;

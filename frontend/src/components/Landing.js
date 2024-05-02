@@ -39,7 +39,7 @@ function Landing() {
         postData
       );
       setNews(response.data);
-      navigate("/results", { state: { articles: response.data } }); // No need for JSON.parse()
+      navigate("/results", { state: { articlesString: JSON.stringify(response.data) } }); 
     } catch (error) {
       console.error("Error fetching news:", error);
       alert("Failed to fetch news. Please try again later.");
