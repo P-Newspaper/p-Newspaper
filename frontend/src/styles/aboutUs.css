@@ -1,10 +1,8 @@
-.container1 {
+/* .container1 {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  grid-template-columns: 1fr 1fr;
   grid-gap: 50px;
   margin-bottom: 50px;
-  
-
 
 }
 
@@ -18,9 +16,9 @@
 
 .mission {
     margin-bottom: 30px;
-}
+} */
 
-.h2 {
+/* .h2 {
     font-size: 25px;
 }
 
@@ -42,30 +40,24 @@
     margin:10px;
     display:inline-block; 
     overflow: hidden;   
-    /* width: calc(20% - 10px); */
-}
+} */
 
-.member img {
+/* .member img {
     width: 200px;
     height: 250px;
-    /* width: 100%;
-    height: 100%; */
     text-align: center;
-    /* object-fit: cover; */
 }
 
 .container2 {
     flex-wrap: wrap;
-    /* display: grid; */
     display: flex;
     justify-content: space-evenly;
-    /* justify-content: center; */
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     text-align: center;
-}
+} */
 
-.name {
+/* .name {
     position: relative;
     top: 0;
     bottom: 0;
@@ -77,6 +69,73 @@
     margin: 5px 0;
     justify-content: space-around;
     max-width: 200px;
-    word-wrap: break-word; /* Wrap long words if they exceed container width */
-    overflow-wrap: conta; /* Fallback for older browsers */
+    word-wrap: break-word;
+    overflow-wrap: conta;
+} */
+.everything {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.container1 {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.para {
+    flex: 1;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.right {
+    flex: 1;
+    text-align: center;
+}
+
+.placeholder {
+    width: 100%;
+    height: auto;
+}
+
+.container2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.member {
+    width: 220px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.member img {
+    width: 150px; /* Fixed width */
+    height: 200px; /* Fixed height */
+    object-fit: cover; /* Maintain aspect ratio */
+    border-radius: 30px;
+}
+
+.name, .discipline, .school {
+    text-align: center;
+    width: 100%;
+    margin-top: 4px;
+}
+
+/* Additional global styles and responsiveness */
+@media (max-width: 768px) {
+    .container1 {
+        flex-direction: column;
+    }
+
+    .member {
+        width: 100%;
+    }
 }

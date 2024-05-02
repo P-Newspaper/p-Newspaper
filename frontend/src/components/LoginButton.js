@@ -7,11 +7,9 @@ function LoginButton({ onLogin }) {
         <div className="title">
             Sign in with Google
         </div>
-        <div>
-            <button className="login-button" onClick={onLogin}>
-            Sign in with Google
-            </button>
-        </div>
+        <button className="login-button" onClick={onLogin}>
+          Sign in
+        </button>
     </div>
   );
 }

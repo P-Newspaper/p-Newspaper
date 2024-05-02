@@ -151,7 +151,7 @@ def get_news():
         if user_selected_interests:
             interests_query = ' | '.join(user_selected_interests)
             sql_query = text('''SELECT * FROM pnews.articles
-                             WHERE to_tsvector(title) @@ to_tsquery(:interests_query)''')
+                             WHERE to_tsvector('english', title || ' ' || summary) @@ to_tsquery(:interests_query)''')
             news_stories = db.session.execute(sql_query, {'interests_query': interests_query}).fetchall()
         
             news_list = [row._asdict() for row in news_stories]
