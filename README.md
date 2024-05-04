@@ -8,6 +8,10 @@ To see detailed statistics on contributions to this repository, check out the [C
 
 p-Newspaper is a web app that aims to connect young people with news that matters to them while eliminating biases. Integrating OpenAI API to handle user input and Newspaper3k for web scraping, p-Newspaper delivers relevant and interesting news stories from a wide array of sources, centralized on one page.
 
+## Demo 
+
+[![Watch the video](https://img.youtube.com/vi/n2n-I3wbA7s/maxresdefault.jpg)](https://youtu.be/n2n-I3wbA7s)
+
 ## Tech Stack
 
 - ChatGPT 3.5 API
