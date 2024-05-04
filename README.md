@@ -1,6 +1,8 @@
 # p-Newspaper
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Insights
+
+To see detailed statistics on contributions to this repository, check out the [Contribution Insights](https://github.com/P-Newspaper/p-newspaper/graphs/contributors).
 
 ## Project Overview
 
